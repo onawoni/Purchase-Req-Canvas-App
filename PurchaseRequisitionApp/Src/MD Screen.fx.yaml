@@ -1,0 +1,190 @@
+"'MD Screen' As screen":
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Stretch
+
+    Rectangle9_1 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    RegForm_14 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        Size: =20
+        Text: ="Managing Director"
+        Width: =1366
+        ZIndex: =2
+
+    Icon50 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        Width: =50
+        X: =331
+        Y: =20
+        ZIndex: =3
+
+    LadoImage_16 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =4
+
+    "Gallery1_3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        BorderColor: =RGBA(39, 113, 194, 1)
+        Fill: =RGBA(255, 255, 255, 0.)
+        Height: =603
+        Items: =SortByColumns(Filter('Ladol Test List', ApprovalStatus = "Approved"),"Created", SortOrder.Descending)
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =Set(varProcManager,ThisItem);
+            ViewForm(ProcManagerForm);
+            //Navigate(ProcManagerForm);
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =87
+        Width: =1366
+        Y: =165
+        ZIndex: =5
+
+        Image1_3 As image:
+            Height: =75
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =89
+            Y: =9
+            ZIndex: =1
+
+        Separator1_3 As rectangle:
+            BorderThickness: =3
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label15_3 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.Created
+            Width: =228
+            X: =541
+            Y: =49
+            ZIndex: =8
+
+        Label16_8 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Staff Email'
+            Width: =230
+            Wrap: =false
+            X: =97
+            Y: =53
+            ZIndex: =9
+
+        Label16_6 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.ApprovalStatus
+            Width: =230
+            X: =541
+            Y: =8
+            ZIndex: =12
+
+        Label16_7 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Staff Name'
+            Width: =230
+            Wrap: =false
+            X: =97
+            Y: =20
+            ZIndex: =14
+
+        Label16_12 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Request ID'
+            Width: =230
+            X: =890
+            Y: =9
+            ZIndex: =15
+
+        Button7 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |-
+                =Set(varMD,ThisItem);
+                ViewForm(MDForm);
+                EditForm(MDForm);
+                Navigate(MDForm);
+                Set(varLoading,true);
+            Text: ="View"
+            Width: =120
+            X: =1144
+            Y: =20
+            ZIndex: =16
+
+    Image5_7 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1284
+        Y: =17
+        ZIndex: =6
+
+    Label2_7 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        Wrap: =false
+        X: =1124
+        Y: =41
+        ZIndex: =7
+
+    Rectangle27 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        Width: =1366
+        Y: =110
+        ZIndex: =8
+
+    Icon7_1 As icon.Reload:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =36
+        Icon: =Icon.Reload
+        OnSelect: |-
+            =Refresh('Ladol Test List');
+            Refresh('Purchase Requisition Line Item')
+        Width: =56
+        X: =36
+        Y: =117
+        ZIndex: =9
+

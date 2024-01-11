@@ -1,0 +1,202 @@
+"'PA Approval' As screen":
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Stretch
+
+    Rectangle7 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        BorderThickness: =0.25
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    RegForm_10 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        Size: =20
+        Text: ="Procurement Admin"
+        Width: =1366
+        ZIndex: =2
+
+    LadoImage_7 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =3
+
+    "Gallery1_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Fill: =RGBA(255, 255, 255, 0.1)
+        Height: =608
+        Items: |-
+            =//Sort('Ladol Test List',Date,SortOrder.Desending)
+            //Sort('Ladol Test List',Date,SortOrder.Descending)
+            SortByColumns(Filter('Ladol Test List',ApprovalStatus = "Pending"),"Created", SortOrder.Descending)
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =Set(varProcAdmin2,ThisItem);
+            ViewForm(ProcManagerForm_1);
+            Navigate(ProcManagerForm_1);
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =86
+        Width: =1366
+        Y: =160
+        ZIndex: =4
+
+        Image1_1 As image:
+            Height: =74
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =80
+            Y: =1
+            ZIndex: =1
+
+        Title1_1 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =32
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.Created
+            VerticalAlign: =VerticalAlign.Top
+            Width: =228
+            X: =608
+            Y: =54
+            ZIndex: =2
+
+        Subtitle1_1 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =27
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =15
+            Text: =ThisItem.'Staff Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1_1.Width
+            X: =91
+            Y: =24
+            ZIndex: =3
+
+        Separator1_1 As rectangle:
+            BorderThickness: =3
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label16_1 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Staff Email'
+            Tooltip: =Label16_1.Text
+            Width: =230
+            Wrap: =false
+            X: =89
+            Y: =58
+            ZIndex: =9
+
+        Label16_4 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.ApprovalStatus
+            Width: =230
+            X: =606
+            Y: =18
+            ZIndex: =12
+
+        Icon5 As icon.View:
+            Color: =RGBA(0, 134, 208, 1)
+            Icon: =Icon.View
+            OnSelect: |-
+                =Set(varProcAdmin2,ThisItem);
+                ViewForm(ProcManagerForm_1);
+                Navigate(ProcManagerForm_1);
+                EditForm(ProcManagerForm_1)
+            X: =1160
+            Y: =6
+            ZIndex: =13
+
+        Label16_10 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Request ID'
+            Width: =230
+            X: =883
+            Y: =24
+            ZIndex: =14
+
+    Image5_2 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1290
+        Y: =11
+        ZIndex: =5
+
+    Label2_2 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        Tooltip: =Label2_2.Text
+        Wrap: =false
+        X: =1116
+        Y: =31
+        ZIndex: =6
+
+    Rectangle23 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =45
+        Width: =1366
+        Y: =109
+        ZIndex: =7
+
+    Icon12 As icon.Reload:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =40
+        Icon: =Icon.Reload
+        OnSelect: |-
+            =Refresh('Ladol Test List');
+            Refresh('Purchase Requisition Line Item');
+            SortByColumns(Filter('Ladol Test List',ApprovalStatus = "Pending"),"Created", SortOrder.Descending);
+            Clear(ProcAdminGLCollection)
+        Width: =40
+        X: =36
+        Y: =111
+        ZIndex: =8
+
+    Icon11 As icon.Home:
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        Width: =50
+        X: =346
+        Y: =19
+        ZIndex: =9
+

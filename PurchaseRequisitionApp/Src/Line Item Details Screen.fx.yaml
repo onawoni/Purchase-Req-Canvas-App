@@ -1,0 +1,207 @@
+"'Line Item Details Screen' As screen":
+
+    MD_Gallery_1 As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Height: =265
+        Items: =Filter('Purchase Requisition Line Item','Line ItemID' = Value(MD_RecordID.Text) And 'Approved Vendor No'= Value(1))
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =50
+        Width: =1364
+        X: =2
+        Y: =338
+        ZIndex: =1
+
+        TextInput8_6 As text:
+            Default: =ThisItem.'Item Name'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            Mode: =TextMode.MultiLine
+            OnSelect: =Select(Parent)
+            Width: =200
+            X: =10
+            Y: =10
+            ZIndex: =1
+
+        TextInput9_13 As text:
+            Default: =ThisItem.'Item No'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =118
+            X: =212
+            Y: =10
+            ZIndex: =2
+
+        Quantity_Text_10 As text:
+            Default: =ThisItem.Qauntity
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =50
+            X: =335
+            Y: =10
+            ZIndex: =6
+
+        V3_Price_5 As text:
+            Color: =RGBA(56, 96, 178, 1)
+            Default: =ThisItem.'Third Vendor Price'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =90
+            X: =737
+            Y: =10
+            ZIndex: =7
+
+        V2_Price_3 As text:
+            Default: =ThisItem.'Second Vendor Price'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =90
+            X: =567
+            Y: =10
+            ZIndex: =8
+
+        V1_Price_3 As text:
+            Color: =RGBA(56, 96, 178, 1)
+            Default: =ThisItem.'First Vendor Price'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =90
+            X: =390
+            Y: =10
+            ZIndex: =9
+
+        V3_Disc_Price_4 As text:
+            Color: =RGBA(56, 96, 178, 1)
+            Default: =ThisItem.'Third Vendor Adv. Payment Terms'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =73
+            X: =830
+            Y: =10
+            ZIndex: =11
+
+        V2_Disc_Price_4 As text:
+            Default: =ThisItem.'Second Vendor Adv. Payment Terms'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =73
+            X: =660
+            Y: =10
+            ZIndex: =12
+
+        V1_Disc_Price_4 As text:
+            Color: =RGBA(56, 96, 178, 1)
+            Default: =ThisItem.'First Vendor Adv. Payment Terms'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =73
+            X: =485
+            Y: =10
+            ZIndex: =13
+
+        Check_Box_2 As checkbox:
+            Height: =40
+            OnCheck: =If(Check_Box_2.Value, Notify("Approved",NotificationType.Success))
+            OnSelect: |-
+                =If(
+                    ThisItem.ID in MDItemsCollection.ID,
+                    Update(
+                        MDItemsCollection,
+                        LookUp(
+                            MDItemsCollection,
+                            ID = ThisItem.ID
+                        ),
+                        {
+                            ItemApprovalStatus: Approval_Status_2.Text,
+                            ID: ThisItem.ID
+                            //ApprovedPrice:Approved_Price_Dropdown_1.Selected.Value
+                        }
+                    ),
+                    Collect(
+                        MDItemsCollection,
+                        {
+                            ItemApprovalStatus: Approval_Status_2.Text,
+                            ID: ThisItem.ID
+                            //ApprovedPrice:Approved_Price_Dropdown_1.Selected.Value
+                        }
+                    )
+                )
+            OnUncheck: =If(!Check_Box_2.Value,Notify("Rejected",NotificationType.Error))
+            Text: =
+            Tooltip: ="Approve Line Item"
+            Width: =40
+            X: =1208
+            Y: =8
+            ZIndex: =14
+
+        Approval_Status_2 As label:
+            OnSelect: =Select(Parent)
+            Text: =If(Check_Box_2.Value = true,"Approved", true,"Rejected")
+            Visible: =false
+            Width: =20
+            X: =1309
+            Y: =10
+            ZIndex: =15
+
+        Approved_Price_Dropdown_2 As dropdown:
+            Height: =35
+            Items: =[Nill_Price_2.Text,V1_Price_3.Text,V2_Price_3.Text,V3_Price_5.Text]
+            OnSelect: =Select(Parent)
+            Visible: =false
+            Width: =96
+            X: =1145
+            Y: =12
+            ZIndex: =16
+
+        Nill_Price_2 As text:
+            Default: ="0"
+            Height: =37
+            OnSelect: =Select(Parent)
+            Visible: =false
+            Width: =24
+            X: =650
+            Y: =10
+            ZIndex: =17
+
+        V3_Price_4 As text:
+            Color: =RGBA(56, 96, 178, 1)
+            Default: =ThisItem.'Approved Price'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =90
+            X: =929
+            Y: =8
+            ZIndex: =18
+
+        MD_App_Status_Text_1 As text:
+            Default: =ThisItem.'Item Approval Status'
+            DisplayMode: =DisplayMode.View
+            Height: =38
+            OnSelect: =Select(Parent)
+            Width: =100
+            X: =1079
+            Y: =9
+            ZIndex: =19
+
+        Icon9_1 As icon.Cancel:
+            Color: =RGBA(168, 0, 0, 1)
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =Remove('Purchase Requisition Line Item',ThisItem);
+                Notify("Line Item Rejcted",NotificationType.Error)
+            Tooltip: ="Reject Line Item"
+            Width: =40
+            X: =1276
+            Y: =20
+            ZIndex: =20
+

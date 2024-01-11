@@ -1,0 +1,24 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-12T17:37:18.4720000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "balancingAccountId": "Balancing Account Id",
+      "balancingAccountNumber": "Balancing Account No.",
+      "code": "Code",
+      "displayName": "Display Name",
+      "id": "Id",
+      "lastModifiedDateTime": "Last Modified Date"
+    },
+    "DatasetName": "PRODUCTION-202303161607,071455fb-83f2-ed11-8848-002248f94e13",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "vendorPaymentJournals (v2.0)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

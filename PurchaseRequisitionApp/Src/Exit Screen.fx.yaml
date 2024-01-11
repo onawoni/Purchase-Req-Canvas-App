@@ -1,0 +1,60 @@
+"'Exit Screen' As screen.'tabletLayout_Success_ver3.0'":
+    BackgroundImage: =
+
+    Rectangle18_13 As rectangle:
+        Fill: =RGBA(2, 57, 87, 1)
+        Height: =768
+        Width: =683
+        ZIndex: =1
+
+    Rectangle18_14 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =768
+        Width: =683
+        X: =683
+        ZIndex: =2
+
+    Image21_12 As image:
+        Height: =200
+        Image: =PO
+        Width: =194
+        X: =950
+        Y: =193
+        ZIndex: =3
+
+    Label21_14 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Purchase Requisition"
+        Width: =683
+        X: =680
+        Y: =447
+        ZIndex: =4
+
+    Image21_13 As image:
+        Height: =110
+        Image: =ladol
+        Width: =343
+        X: =683
+        ZIndex: =5
+
+    Label21_15 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Purchase requisition Updated Successfully"
+        Width: =683
+        Y: =333
+        ZIndex: =6
+
+    Icon1_2 As icon.Home:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        X: =616
+        ZIndex: =7
+

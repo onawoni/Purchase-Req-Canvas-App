@@ -1,0 +1,505 @@
+"'Proq Manager' As screen":
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Stretch
+    OnVisible: |-
+        =ClearCollect(ManagerListCollections,
+        SortByColumns('Managers List',"Created",SortOrder.Descending))
+
+    Rectangle9 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =768
+        OnSelect: |-
+            =UpdateContext({Report:false})
+        Width: =1366
+        ZIndex: =1
+
+    RegForm_12 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        OnSelect: |-
+            =UpdateContext({Report:false})
+        Size: =20
+        Text: ="Procurement Manager"
+        Width: =1366
+        ZIndex: =2
+
+    LadoImage_9 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =3
+
+    "Gallery1_2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Fill: =RGBA(255, 255, 255, 0)
+        Height: =603
+        Items: =SortByColumns(Filter('Ladol Test List',ApprovalStatus = "Pending..."),"Created", SortOrder.Descending)
+        Layout: =Layout.Vertical
+        OnSelect: |-
+            =Set(varProcManager,ThisItem);
+            ViewForm(ProcManagerForm);
+            Navigate(ProcManagerForm);
+            EditForm(ProcManagerForm);
+            UpdateContext({Report:false});
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =83
+        Width: =1366
+        Y: =165
+        ZIndex: =4
+
+        Image1_2 As image:
+            Height: =75
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =89
+            Y: =9
+            ZIndex: =1
+
+        Separator1_2 As rectangle:
+            BorderThickness: =3
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label15_2 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.Created
+            Width: =228
+            X: =544
+            Y: =41
+            ZIndex: =8
+
+        Label16_2 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Staff Email'
+            Tooltip: =Label16_2.Text
+            Width: =230
+            Wrap: =false
+            X: =96
+            Y: =48
+            ZIndex: =9
+
+        Label16_3 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.ApprovalStatus
+            Width: =230
+            X: =541
+            Y: =8
+            ZIndex: =12
+
+        Icon3 As icon.View:
+            Color: =RGBA(39, 113, 194, 1)
+            Icon: =Icon.View
+            OnSelect: |-
+                =Set(varProcManager,ThisItem);
+                ViewForm(ProcManagerForm);
+                Navigate(ProcManagerForm);
+                EditForm(ProcManagerForm);
+            X: =1144
+            Y: =20
+            ZIndex: =13
+
+        Label16_5 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Staff Name'
+            Tooltip: =Label16_5.Text
+            Width: =230
+            Wrap: =false
+            X: =97
+            Y: =12
+            ZIndex: =14
+
+        Label16_11 As label:
+            Color: =RGBA(0, 134, 208, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.'Request ID'
+            Width: =230
+            X: =871
+            Y: =9
+            ZIndex: =15
+
+    Rectangle26 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        Width: =1366
+        Y: =110
+        ZIndex: =5
+
+    Image1 As image:
+        Height: =608
+        Image: ='Ladol Background'
+        ImagePosition: =ImagePosition.Fill
+        Visible: =ViewReport
+        Width: =1366
+        Y: =160
+        ZIndex: =6
+
+    Rectangle54 As rectangle:
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =608
+        Visible: =ViewReport
+        Width: =1366
+        Y: =160
+        ZIndex: =7
+
+    DataTable2 As dataTable.datatable:
+        BorderStyle: =BorderStyle.Solid
+        Color: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(255, 255, 255, 0)
+        FontWeight: =FontWeight.Bold
+        HeadingFill: =RGBA(0, 94, 146, 1)
+        HeadingFontWeight: =FontWeight.Bold
+        Height: =608
+        HoverColor: =RGBA(0, 94, 146, 1)
+        Items: =ManagerListCollections
+        SelectedFill: =RGBA(0, 94, 146, 1)
+        Visible: =ViewReport
+        Width: =1366
+        X: =0
+        Y: =160
+        ZIndex: =8
+
+        Items_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Type"
+            FieldName: ="Items"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =3
+            Text: =ThisItem.'Type Name'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =17
+
+        "'Items No_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Items No"
+            FieldName: ="Quantity"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =4
+            Text: =ThisItem.'Type No'
+            Width: =100
+            X: =123
+            Y: =0
+            ZIndex: =18
+
+        "'Approved Vendor_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Approved Vendor"
+            FieldName: ="Vendor"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =14
+            Text: =ThisItem.'Approved Vendor'
+            Width: =100
+            X: =425
+            Y: =0
+            ZIndex: =23
+
+        "'Approved Price_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Approved Price"
+            FieldName: ="OData__x0031_stVendorPrice"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =18
+            Text: =ThisItem.'Approved Price'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =24
+
+        "'Payment Terms_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Payment Terms"
+            FieldName: ="PaymentTerms"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =16
+            Text: =ThisItem.'Payment Terms'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =27
+
+        Created_Column1 As dataTableColumn.dateTimeColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Created"
+            FieldName: ="Created"
+            FieldVariantName: ="dateTimeColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =21
+            Text: |
+                =//Text(ThisItem.Created,DateTimeFormat.ShortDateTime)
+                Text(ThisItem.Created, "dd/mm/yyyy hh:mm:ss")
+            Width: =237
+            X: =1129
+            Y: =0
+            ZIndex: =28
+
+        Quantity_Column2 As dataTableColumn.textualColumn:
+            AutoWidth: =false
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Quantity"
+            FieldName: ="Quantity0"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =13
+            Text: =ThisItem.'Quantity (Quantity0)'
+            Width: =115
+            X: =0
+            Y: =0
+            ZIndex: =29
+
+        "'Currency Code_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Currency Code"
+            FieldName: ="cal"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =15
+            Text: =ThisItem.'Currency Code'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =30
+
+        "'Prepayment Percentage_Column1' As dataTableColumn.textualColumn":
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Prepayment Percentage"
+            FieldName: ="UnitPrice"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =17
+            Text: =ThisItem.'Prepayment Percentage'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =31
+
+        ApprovalStatus_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Service Type"
+            FieldName: ="ApprovalStatus"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =9
+            Text: =ThisItem.'Service Type'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =32
+
+        SecondVendorAdv_x002e_Pay_x002e__Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Requst No"
+            FieldName: ="SecondVendorAdv_x002e_Pay_x002e_"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =20
+            Text: =ThisItem.'Request ID'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =33
+
+        OData__x0032_ndVendorPrice_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Pre-payment Amount"
+            FieldName: ="OData__x0032_ndVendorPrice"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =19
+            Text: =ThisItem.'Pre-payment amount'
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =34
+
+        StaffName_Column1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Department"
+            FieldName: ="StaffName"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =10
+            Text: =ThisItem.Department
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =35
+
+    ReportContainer As groupContainer.manualLayoutContainer:
+        Height: =768
+        Visible: =Report
+        Width: =1366
+        ZIndex: =9
+
+    Image5_4 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1292
+        Y: =25
+        ZIndex: =10
+
+    Label2_4 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        Tooltip: =Label2_4.Text
+        Wrap: =false
+        X: =1122
+        Y: =41
+        ZIndex: =11
+
+    Icon7 As icon.Reload:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =36
+        Icon: =Icon.Reload
+        OnSelect: |
+            =Refresh('Ladol Test List');
+            Refresh('Purchase Requisition Line Item');
+            Refresh('Managers List');
+            Clear(ManagerListCollections);
+            ClearCollect(ManagerListCollections,
+            SortByColumns('Managers List',"Created",SortOrder.Descending));
+            SortByColumns(Filter('Ladol Test List',ApprovalStatus = "Pending..."),"Created", SortOrder.Descending)
+        Width: =56
+        X: =36
+        Y: =117
+        ZIndex: =12
+
+    Image7 As image:
+        Height: =46
+        Image: ='Report Icon'
+        OnSelect: |
+            =//UpdateContext({Report:true});
+            UpdateContext({ViewReport:true})
+        Width: =68
+        X: =1002
+        Y: =111
+        ZIndex: =13
+
+    Icon29 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        Tooltip: ="Home"
+        Width: =50
+        X: =333
+        Y: =20
+        ZIndex: =14
+
+    Label13 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =42
+        Size: =15
+        Text: ="Report"
+        Width: =90
+        X: =904
+        Y: =118
+        ZIndex: =15
+
+    Icon16 As icon.Download:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =30
+        Icon: =Icon.Download
+        OnSelect: |-
+            =Launch("https://ladolenterprise-my.sharepoint.com/personal/bcadmin_ladol_com/_vti_bin/owssvr.dll?CS=109&Using=_layouts/query.iqy&List=ea1dfaea-9d4f-45cd-be5d-941004d4e111")
+        Tooltip: ="Download Report"
+        Visible: =ViewReport
+        Width: =40
+        X: =1190
+        Y: =121
+        ZIndex: =16
+
+    Label13_1 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        Size: =15
+        Text: ="Download"
+        Visible: =ViewReport
+        Width: =131
+        X: =1074
+        Y: =119
+        ZIndex: =17
+
+    Icon35 As icon.Cancel:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =26
+        Icon: =Icon.Cancel
+        OnSelect: |-
+            =UpdateContext({ViewReport:false});
+            UpdateContext({Report:false})
+        Visible: =ViewReport
+        Width: =44
+        X: =1314
+        Y: =125
+        ZIndex: =18
+
+    Label13_2 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =42
+        Size: =15
+        Text: ="Close"
+        Visible: =ViewReport
+        Width: =70
+        X: =1238
+        Y: =118
+        ZIndex: =19
+

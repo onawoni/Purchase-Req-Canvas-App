@@ -1,0 +1,4445 @@
+"'Procurement Admin 2' As screen":
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Stretch
+    OnVisible: |+
+        =ClearCollect(
+           Discount,
+           { Value: 0, Name: "0" },
+           { Value: 0.01, Name: "1" },
+           { Value: 0.02, Name: "2" },
+           { Value: 0.03, Name: "3" },
+           { Value: 0.04, Name: "4" },
+           { Value: 0.05, Name: "5" },
+           { Value: 0.06, Name: "6" },
+           { Value: 0.07, Name: "7" },
+           { Value: 0.08, Name: "8" },
+           { Value: 0.09, Name: "9" },
+           { Value: 0.10, Name: "10" },
+           { Value: 0.11, Name: "11" },
+           { Value: 0.12, Name: "12" },
+           { Value: 0.13, Name: "13" },
+           { Value: 0.14, Name: "14" },
+           { Value: 0.15, Name: "15" },
+           { Value: 0.16, Name: "16" },
+           { Value: 0.17, Name: "17" },
+           { Value: 0.18, Name: "18" },
+           { Value: 0.19, Name: "19" },
+           { Value: 0.20, Name: "20" },
+           { Value: 0.21, Name: "21" },
+           { Value: 0.22, Name: "22" },
+           { Value: 0.23, Name: "23" },
+           { Value: 0.24, Name: "24" },
+           { Value: 0.25, Name: "25" },
+           { Value: 0.26, Name: "26" },
+           { Value: 0.27, Name: "27" },
+           { Value: 0.28, Name: "28" },
+           { Value: 0.29, Name: "29" },
+           { Value: 0.30, Name: "30" },
+           { Value: 0.31, Name: "31" },
+           { Value: 0.32, Name: "32" },
+           { Value: 0.33, Name: "33" },
+           { Value: 0.34, Name: "34" },
+           { Value: 0.35, Name: "35" },
+           { Value: 0.36, Name: "36" },
+           { Value: 0.37, Name: "37" },
+           { Value: 0.38, Name: "38" },
+           { Value: 0.39, Name: "39" },
+           { Value: 0.40, Name: "40" },
+           { Value: 0.41, Name: "41" },
+           { Value: 0.42, Name: "42" },
+           { Value: 0.43, Name: "43" },
+           { Value: 0.44, Name: "44" },
+           { Value: 0.45, Name: "45" },
+           { Value: 0.46, Name: "46" },
+           { Value: 0.47, Name: "47" },
+           { Value: 0.48, Name: "48" },
+           { Value: 0.49, Name: "49" },
+           { Value: 0.50, Name: "50" },
+           { Value: 0.51, Name: "51" },
+           { Value: 0.52, Name: "52" },
+           { Value: 0.53, Name: "53" },
+           { Value: 0.54, Name: "54" },
+           { Value: 0.55, Name: "55" },
+           { Value: 0.56, Name: "56" },
+           { Value: 0.57, Name: "57" },
+           { Value: 0.58, Name: "58" },
+           { Value: 0.59, Name: "59" },
+           { Value: 0.60, Name: "60" },
+           { Value: 0.61, Name: "61" },
+           { Value: 0.62, Name: "62" },
+           { Value: 0.63, Name: "63" },
+           { Value: 0.64, Name: "64" },
+           { Value: 0.65, Name: "65" },
+           { Value: 0.66, Name: "66" },
+           { Value: 0.67, Name: "67" },
+           { Value: 0.68, Name: "68" },
+           { Value: 0.69, Name: "69" },
+           { Value: 0.70, Name: "70" },
+           { Value: 0.71, Name: "71" },
+           { Value: 0.72, Name: "72" },
+           { Value: 0.73, Name: "73" },
+           { Value: 0.74, Name: "74" },
+           { Value: 0.75, Name: "75" },
+           { Value: 0.76, Name: "76" },
+           { Value: 0.77, Name: "77" },
+           { Value: 0.78, Name: "78" },
+           { Value: 0.79, Name: "79" },
+           { Value: 0.80, Name: "80" },
+           { Value: 0.81, Name: "81" },
+           { Value: 0.82, Name: "82" },
+           { Value: 0.83, Name: "83" },
+           { Value: 0.84, Name: "84" },
+           { Value: 0.85, Name: "85" },
+           { Value: 0.86, Name: "86" },
+           { Value: 0.87, Name: "87" },
+           { Value: 0.88, Name: "88" },
+           { Value: 0.89, Name: "89" },
+           { Value: 0.90, Name: "90" },
+           { Value: 0.91, Name: "91" },
+           { Value: 0.92, Name: "92" },
+           { Value: 0.93, Name: "93" },
+           { Value: 0.94, Name: "94" },
+           { Value: 0.95, Name: "95" },
+           { Value: 0.96, Name: "96" },
+           { Value: 0.97, Name: "97" },
+           { Value: 0.98, Name: "98" },
+           { Value: 0.99, Name: "99" },
+           { Value: 1.00, Name: "100" }
+        );
+        
+
+    Rectangle8 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =1
+
+    Button6_7 As button:
+        Fill: =RGBA(0, 94, 146, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Height: =30
+        OnSelect: =Set(ProcAdminItemList,true)
+        Text: ="View Items"
+        Width: =125
+        X: =1024
+        Y: =738
+        ZIndex: =2
+
+    Button6_6 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |
+            =If(ProcManagerForm_1.Valid, DisplayMode.Edit,DisplayMode.Disabled)
+            //If(And(
+            //    IsBlank(ComboBox2_2.SelectedItems) =false,
+            //    IsBlank(DataCardValue2.Text) =false,
+            //    IsBlank(DataCardValue30_2.Text) =false,
+            //    IsBlank(DataCardValue31_2.Text) = false,
+            //    IsBlank(PaymentTermsComboBox.SelectedItems) = false),
+            //    DisplayMode.Edit,
+            //    DisplayMode.Disabled)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Height: =30
+        OnSelect: |+
+            =SubmitForm(ProcManagerForm_1);
+            Patch('Purchase Requisition Line Item',ProcAdminItemsCollection);
+            Patch('Purchase Requisition Line Item',ProcAdminGLCollection);
+            Reset(V1Dropdown);
+            Reset(V2Dropdown);
+            Reset(V3Dropdown);
+            Clear(ProcAdminItemsCollection);
+            Clear(ProcAdminGLCollection);
+            Set(varProcAdmin2, Patch('Ladol Test List', varProcAdmin2, {ApprovalStatus: "Pending..."}));
+            Office365Outlook.SendEmailV2(varProcAdmin2.'Created By'.Email, "Your Purchase Requisition has been approved.", "Congratulations!!! <br> <br> Your request submited on "&varProcAdmin2.Date &" has been approved  by the Procurement Admin. Please wait for the next approval");
+            
+            
+            
+        Text: ="Submit"
+        Visible: |-
+            =//If(And(
+            //    IsBlank(ComboBox2_2.SelectedItems) =false,
+            //    IsBlank(DataCardValue2.Text) =false,
+            //    IsBlank(DataCardValue30_2.Text) =false,
+            //    IsBlank(DataCardValue31_2.Text) = false,
+            //    IsBlank(PaymentTermsComboBox.SelectedItems) = false),
+            //    true,
+            //    false)
+            true
+        Width: =111
+        X: =1215
+        Y: =738
+        ZIndex: =3
+
+    RegForm_4 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        Size: =20
+        Text: ="Procurement Admin's Request Details"
+        Width: =1366
+        ZIndex: =4
+
+    Rectangle49 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =40
+        Width: =1366
+        Y: =108
+        ZIndex: =5
+
+    LadoImage_11 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =6
+
+    ProcManagerForm_1 As form:
+        DataSource: ='Ladol Test List'
+        Height: =577
+        Item: =varProcAdmin2
+        OnSuccess: |-
+            =Set(varProcAdmin2FormID, ProcManagerForm_1.LastSubmit.ID);
+            Set(varProcAdmin2, ProcManagerForm_1.LastSubmit);
+            Office365Outlook.SendEmailV2("procuremanager@ladol.com", "New Requisition", "Hello Procurement Manager, <br> <br> You have a new aproval request from "&varProcAdmin2.'Staff Name'&".  <br> For details, click  <a href='https://apps.powerapps.com/play/2f425879-e5e5-471c-9e66-75db29ece8db?RID="&varProcAdmin2FormID&"'>here</a>");
+            Navigate(ProcAdminSuccessScreen)
+        Width: =1359
+        X: =5
+        Y: =159
+        ZIndex: =7
+
+        "'Service Type_DataCard3' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ServiceType"
+            Default: =ThisItem.'Service Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ServiceType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue21.Selected
+            Width: =453
+            X: =2
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey40 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue21 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =DisplayMode.View
+                IsSearchable: =false
+                Items: =Choices([@'Ladol Test List'].'Service Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey40.Y + DataCardKey40.Height + 5
+                ZIndex: =2
+
+            ErrorMessage44 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue21.Y + DataCardValue21.Height
+                ZIndex: =3
+
+            StarVisible44 As label:
+                Align: =Align.Center
+                Height: =DataCardKey40.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey40.Y
+                ZIndex: =4
+
+        "'Service Amount_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ServiceAmount"
+            Default: =ThisItem.'Service Amount'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ServiceAmount")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =199
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "ServiceAmount")
+            Required: =false
+            Update: =DataCardValue18.Text
+            Width: =453
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey33 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue18 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey33.Y + DataCardKey33.Height + 5
+                ZIndex: =2
+
+            ErrorMessage33 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue18.Y + DataCardValue18.Height
+                ZIndex: =3
+
+            StarVisible33 As label:
+                Align: =Align.Center
+                Height: =DataCardKey33.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey33.Y
+                ZIndex: =4
+
+        "'G/L Account_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="G_x002f_LAccount"
+            Default: =ThisItem.'G/L Account'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"G_x002f_LAccount")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "G_x002f_LAccount")
+            Required: =false
+            Update: =DataCardValue8.Text
+            Visible: =false
+            Width: =453
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey12 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue8 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey12.Y + DataCardKey12.Height + 5
+                ZIndex: =2
+
+            ErrorMessage12 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue8.Y + DataCardValue8.Height
+                ZIndex: =3
+
+            StarVisible12 As label:
+                Align: =Align.Center
+                Height: =DataCardKey12.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey12.Y
+                ZIndex: =4
+
+        "'G/L Account No._DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="G_x002f_LAccountNo_x002e_"
+            Default: =ThisItem.'G/L Account No.'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"G_x002f_LAccountNo_x002e_")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "G_x002f_LAccountNo_x002e_")
+            Required: =false
+            Update: =DataCardValue14.Text
+            Visible: =false
+            Width: =453
+            X: =1
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey31 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue14 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey31.Y + DataCardKey31.Height + 5
+                ZIndex: =2
+
+            ErrorMessage31 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue14.Y + DataCardValue14.Height
+                ZIndex: =3
+
+            StarVisible31 As label:
+                Align: =Align.Center
+                Height: =DataCardKey31.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey31.Y
+                ZIndex: =4
+
+        "'Request ID_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="RequestID"
+            Default: =ThisItem.'Request ID'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"RequestID")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "RequestID")
+            Required: =false
+            Update: =ProcAdminRequestID.Text
+            Visible: =false
+            Width: =453
+            X: =2
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ProcAdminRequestID As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                ZIndex: =2
+
+            ErrorMessage7 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ProcAdminRequestID.Y + ProcAdminRequestID.Height
+                ZIndex: =3
+
+            StarVisible7 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7.Y
+                ZIndex: =4
+
+        "'Requester Comment_DataCard3' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="RequesterComment"
+            Default: =ThisItem.'Requester Comment'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"RequesterComment")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =158
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "RequesterComment")
+            Required: =false
+            Update: =Req_Comment.Text
+            Width: =1359
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey17 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            Req_Comment As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                Height: =101
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey17.Y + DataCardKey17.Height + 5
+                ZIndex: =2
+
+            ErrorMessage17 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Req_Comment.Y + Req_Comment.Height
+                ZIndex: =3
+
+            StarVisible17 As label:
+                Align: =Align.Center
+                Height: =DataCardKey17.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey17.Y
+                ZIndex: =4
+
+        "'Staff Name_DataCard1_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffName"
+            Default: =ThisItem.'Staff Name'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"StaffName")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "StaffName")
+            Required: =false
+            Update: =DataCardValue2_2.Text
+            Width: =453
+            X: =0
+            Y: =0
+            ZIndex: =8
+
+            DataCardKey2_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue2_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey2_2.Y + DataCardKey2_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage2_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue2_2.Y + DataCardValue2_2.Height
+                ZIndex: =3
+
+            StarVisible2_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey2_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey2_2.Y
+                ZIndex: =4
+
+        "'Staff Email_DataCard1_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffEmail"
+            Default: =ThisItem.'Staff Email'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"StaffEmail")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "StaffEmail")
+            Required: =false
+            Update: =DataCardValue3_2.Text
+            Width: =453
+            X: =1
+            Y: =0
+            ZIndex: =8
+
+            DataCardKey3_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue3_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey3_2.Y + DataCardKey3_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage3_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3_2.Y + DataCardValue3_2.Height
+                ZIndex: =3
+
+            StarVisible3_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey3_2.Y
+                ZIndex: =4
+
+        Date_DataCard1_2 As typedDataCard.dateEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Date"
+            Default: =ThisItem.Date
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Date")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue4_2.SelectedDate
+            Width: =453
+            X: =2
+            Y: =0
+            ZIndex: =8
+
+            DataCardKey4_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue4_2 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey4_2.Y + DataCardKey4_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue4_2.Y + DataCardValue4_2.Height
+                ZIndex: =3
+
+            StarVisible4_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4_2.Y
+                ZIndex: =4
+
+        Department_DataCard1_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Department"
+            Default: =ThisItem.Dimension
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Department")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Department")
+            Required: =false
+            Update: =DataCardValue5_2.Text
+            Width: =453
+            X: =0
+            Y: =1
+            ZIndex: =8
+
+            DataCardKey5_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue5_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey5_2.Y + DataCardKey5_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage5_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue5_2.Y + DataCardValue5_2.Height
+                ZIndex: =3
+
+            StarVisible5_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey5_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey5_2.Y
+                ZIndex: =4
+
+        "'Department Type_DataCard3_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentType"
+            Default: =ThisItem.'Department Type'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"DepartmentType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "DepartmentType")
+            Required: =false
+            Update: =DataCardValue16_2.Text
+            Width: =453
+            X: =1
+            Y: =1
+            ZIndex: =8
+
+            DataCardKey16_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue16_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey16_2.Y + DataCardKey16_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage16_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue16_2.Y + DataCardValue16_2.Height
+                ZIndex: =3
+
+            StarVisible16_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey16_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey16_2.Y
+                ZIndex: =4
+
+        "'Department Code_DataCard3_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentCode"
+            Default: =ThisItem.'Department Code'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"DepartmentCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "DepartmentCode")
+            Required: =false
+            Update: =DataCardValue17_2.Text
+            Width: =453
+            X: =2
+            Y: =1
+            ZIndex: =8
+
+            DataCardKey17_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue17_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey17_2.Y + DataCardKey17_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage17_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue17_2.Y + DataCardValue17_2.Height
+                ZIndex: =3
+
+            StarVisible17_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey17_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey17_2.Y
+                ZIndex: =4
+
+        Site_DataCard3_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Site"
+            Default: =ThisItem.Dimensions
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Site")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Site")
+            Required: =false
+            Update: =DataCardValue18_2.Text
+            Width: =453
+            X: =0
+            Y: =2
+            ZIndex: =8
+
+            DataCardKey18_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue18_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey18_2.Y + DataCardKey18_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage18_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue18_2.Y + DataCardValue18_2.Height
+                ZIndex: =3
+
+            StarVisible18_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey18_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey18_2.Y
+                ZIndex: =4
+
+        "'Site Code_DataCard3_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="SiteCode"
+            Default: =ThisItem.'Site Code'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"SiteCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "SiteCode")
+            Required: =false
+            Update: =DataCardValue19_2.Text
+            Width: =453
+            X: =1
+            Y: =2
+            ZIndex: =8
+
+            DataCardKey19_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue19_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey19_2.Y + DataCardKey19_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage19_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue19_2.Y + DataCardValue19_2.Height
+                ZIndex: =3
+
+            StarVisible19_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey19_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey19_2.Y
+                ZIndex: =4
+
+        Budget_DataCard1_2 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Budget"
+            Default: =ThisItem.Budget
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Budget")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Value(DataCardValue7_2.Text)
+            Width: =453
+            X: =2
+            Y: =2
+            ZIndex: =8
+
+            DataCardKey7_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7_2.Y + DataCardKey7_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage7_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7_2.Y + DataCardValue7_2.Height
+                ZIndex: =3
+
+            StarVisible7_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey7_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey7_2.Y
+                ZIndex: =4
+
+        "'Budget Name_DataCard1_2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="BudgetName"
+            Default: =ThisItem.'Budget Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"BudgetName")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "BudgetName")
+            Required: =false
+            Update: =DataCardValue8_2.Text
+            Width: =453
+            X: =0
+            Y: =3
+            ZIndex: =8
+
+            DataCardKey8_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue8_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey8_2.Y + DataCardKey8_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage8_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue8_2.Y + DataCardValue8_2.Height
+                ZIndex: =3
+
+            StarVisible8_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey8_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey8_2.Y
+                ZIndex: =4
+
+        "'Project Type_DataCard1_2' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ProjectType"
+            Default: =ThisItem.'Project Type'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ProjectType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue12_2.Selected
+            Width: =453
+            X: =1
+            Y: =3
+            ZIndex: =8
+
+            DataCardKey12_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue12_2 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices([@'Ladol Test List'].'Project Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey12_2.Y + DataCardKey12_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage12_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue12_2.Y + DataCardValue12_2.Height
+                ZIndex: =3
+
+            StarVisible12_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey12_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey12_2.Y
+                ZIndex: =4
+
+        Attachments_DataCard1_2 As typedDataCard.attachmentsEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="{Attachments}"
+            Default: =ThisItem.Attachments
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"{Attachments}")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =215
+            Required: =true
+            Update: =DataCardValue32_2.Attachments
+            Width: =453
+            X: =1
+            Y: =4
+            ZIndex: =8
+
+            DataCardKey32_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue32_2 As attachments:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DisplayMode: =Parent.DisplayMode
+                Height: =92
+                IsInDataCard: =true
+                Items: =Parent.Default
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey32_2.Y + DataCardKey32_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage32_2 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =25
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =10
+                Text: ="File Size must not exceed 10MB"
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =145
+                ZIndex: =3
+
+            StarVisible32_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey32_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey32_2.Y
+                ZIndex: =4
+
+        "'Expected Receipt Date_DataCard1_2' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedReceiptDate"
+            Default: =ThisItem.'Expected Receipt Date'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ExpectedReceiptDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =140
+            Required: =false
+            Update: =DataCardValue14_2.SelectedDate
+            Width: =453
+            X: =2
+            Y: =4
+            ZIndex: =8
+
+            DataCardKey14_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue14_2 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey14_2.Y + DataCardKey14_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage14_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue14_2.Y + DataCardValue14_2.Height
+                ZIndex: =3
+
+            StarVisible14_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey14_2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey14_2.Y
+                ZIndex: =4
+
+    Icon4 As icon.BackArrow:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =35
+        Icon: =Icon.BackArrow
+        OnSelect: |-
+            =Navigate('PA Approval');
+            Reset(V1Dropdown);
+            Reset(V2Dropdown);
+            Reset(V3Dropdown);
+            Clear(ProcAdminItemsCollection);
+            Clear(ProcAdminGLCollection);
+            Reset(FirstVendorPrice);
+            Reset(SecondVendorPrice);
+            Reset(ThirdVendorPrice);
+            Reset(FirstVendor_ComboBox);
+            Reset(SecondVendor_ComboBox);
+            Reset(ThirdVendor_ComboBox);
+            Reset(V1Dropdown);
+            Reset(V2Dropdown);
+            Reset(V3Dropdown);
+        Width: =35
+        X: =1300
+        Y: =110
+        ZIndex: =8
+
+    Image5_3 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1290
+        Y: =21
+        ZIndex: =9
+
+    Label2_3 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        Tooltip: =Label2_3.Text
+        Wrap: =false
+        X: =1134
+        Y: =26
+        ZIndex: =10
+
+    ProcAdmin2ID As label:
+        Text: =varProcAdmin2.ID
+        Visible: =false
+        X: =309
+        Y: =32
+        ZIndex: =11
+
+    V1_Discount As text:
+        Default: =V1Dropdown.Selected.Name
+        Format: =TextFormat.Number
+        Height: =63
+        Visible: =false
+        Width: =228
+        X: =422
+        Y: =9
+        ZIndex: =12
+
+    V2_Discount As text:
+        Default: =V2Dropdown.Selected.Name
+        Height: =32
+        Visible: =false
+        Width: =128
+        X: =678
+        Y: =9
+        ZIndex: =13
+
+    V3_Discount As text:
+        Default: =V3Dropdown.Selected.Name
+        Height: =32
+        Visible: =false
+        Width: =128
+        X: =856
+        Y: =9
+        ZIndex: =14
+
+    Label9 As label:
+        Text: =V1Dropdown.Selected.Name
+        Visible: =false
+        X: =1098
+        Y: =41
+        ZIndex: =15
+
+    ProcAdmItemContainer As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =768
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =ProcAdminItemList
+        Width: =1366
+        ZIndex: =16
+
+        Image15 As image:
+            Height: =659
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1356
+            Y: =109
+            ZIndex: =1
+
+        Rectangle20 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =656
+            Width: =1356
+            Y: =109
+            ZIndex: =2
+
+        Gallery11 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =553
+            Items: =Filter('Purchase Requisition Line Item','Line ItemID'= Value(ProcAdmin2ID.Text))
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.ID in ProcAdminItemsCollection.ID,Color.DarkCyan)
+                //RGBA(0, 0, 0, 0)
+            TemplateSize: =45
+            Visible: =If(DataCardValue21.Selected.Value="G/L Account",false,true)
+            Width: =1355
+            Y: =215
+            ZIndex: =3
+
+            Item_name As text:
+                Default: =ThisItem.'Item Name'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Name'
+                Width: =200
+                X: =30
+                Y: =7
+                ZIndex: =1
+
+            Item_no As text:
+                Default: =ThisItem.'Item No'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =131
+                X: =230
+                Y: =7
+                ZIndex: =2
+
+            V3_Disc_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).ThirdVendorPrePayPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1270
+                Y: =7
+                ZIndex: =9
+
+            V2_Disc_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).SecondVendorPrePayPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1052
+                Y: =7
+                ZIndex: =10
+
+            V1_Disc_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).FirstVendorPrePayPrice,"")
+                    
+                    //(Value(V1_Price.Text) * V1PrePayPercValue.Text)
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =837
+                Y: =7
+                ZIndex: =11
+
+            Quantity_Text_6 As text:
+                Default: =ThisItem.Qauntity
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =357
+                Y: =7
+                ZIndex: =12
+
+            V3_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).OData__x0033_rdVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1134
+                Y: =7
+                ZIndex: =13
+
+            V2_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).OData__x0032_ndVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =918
+                Y: =7
+                ZIndex: =14
+
+            V1_Price As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).OData__x0031_stVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =704
+                Y: =7
+                ZIndex: =15
+
+            Item_Spec As text:
+                Default: =ThisItem.'Item Specification'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                Mode: =TextMode.MultiLine
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Specification'
+                Width: =265
+                X: =430
+                Y: =7
+                ZIndex: =16
+
+            V1_PrepayPerc As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).OData__x0031_stVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =777
+                Y: =7
+                ZIndex: =17
+
+            V2_PrepayPerc As text:
+                Default: |
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).OData__x0032_ndVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =992
+                Y: =7
+                ZIndex: =18
+
+            V3_PrepayPerc As text:
+                Default: |
+                    =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                    LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).OData__x0033_rdVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =1209
+                Y: =7
+                ZIndex: =19
+
+            Icon27 As icon.Edit:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =38
+                Icon: =Icon.Edit
+                OnSelect: =Set(Proc_Admin_LineItem_Details, true)
+                Width: =26
+                Y: =7
+                ZIndex: =20
+
+            PrepayPercValue As group:
+                Height: =5
+                Width: =5
+                X: =80
+                Y: =45
+                ZIndex: =36
+
+                V1PrePayPercValue As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).FirstVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =60
+                    Y: =5
+                    ZIndex: =33
+
+                V2PrePayPercValue As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).SecondVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =146
+                    Y: =5
+                    ZIndex: =34
+
+                V3PrePayPercValue As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection, ID = ThisItem.ID).ThirdVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =264
+                    Y: =5
+                    ZIndex: =35
+
+            VendorDetails As group:
+                Height: =5
+                Width: =5
+                X: =100
+                Y: =45
+                ZIndex: =42
+
+                "'First Vendor Name' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection, ID= ThisItem.ID).FirstVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =40
+                    Y: =5
+                    ZIndex: =21
+
+                "'Second Vendor Name' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).SecondVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =443
+                    Y: =5
+                    ZIndex: =22
+
+                "'Third Vendor Name' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).ThirdVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =752
+                    Y: =5
+                    ZIndex: =23
+
+                "'First Vendor ID' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).FirstVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =120
+                    Y: =5
+                    ZIndex: =24
+
+                "'First Vendor No' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).FirstVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =200
+                    Y: =5
+                    ZIndex: =25
+
+                "'Second Vendor ID' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).SecondVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =507
+                    Y: =5
+                    ZIndex: =26
+
+                "'Second Vendor No' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).SecondVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =587
+                    Y: =5
+                    ZIndex: =27
+
+                "'Third Vendor ID' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).ThirdVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =822
+                    Y: =5
+                    ZIndex: =28
+
+                "'Third Vendor No' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).ThirdVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =902
+                    Y: =5
+                    ZIndex: =29
+
+                "'First Vendor CurCode' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).FirstVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =281
+                    Y: =5
+                    ZIndex: =30
+
+                "'Second Vendor CurCode' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).SecondVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =660
+                    Y: =5
+                    ZIndex: =31
+
+                "'Third Vendor CurCode' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID=ThisItem.ID).ThirdVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =988
+                    Y: =5
+                    ZIndex: =32
+
+                V1_PaymentTerms As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).AdvancePayment,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =100
+                    X: =80
+                    Y: =5
+                    ZIndex: =36
+
+                V2_PaymentTerms As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).SecondVendorAdvPaymentTerms,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =85
+                    X: =675
+                    Y: =5
+                    ZIndex: =37
+
+                V3_PaymentTerms As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).ThirdVendorAdvPaymentTerms,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =49
+                    X: =1064
+                    Y: =5
+                    ZIndex: =38
+
+                V1_PaymentTermsID As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).AdvancePaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =100
+                    X: =200
+                    Y: =5
+                    ZIndex: =39
+
+                V2_PaymentTermsID As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).SecondVendorAdvPaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =85
+                    X: =795
+                    Y: =5
+                    ZIndex: =40
+
+                V3_PaymentTermsID As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminItemsCollection.ID,
+                        LookUp(ProcAdminItemsCollection,ID= ThisItem.ID).ThirdVendorAdvPaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =49
+                    X: =1184
+                    Y: =5
+                    ZIndex: =41
+
+        Rectangle44 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =46
+            Width: =1366
+            Y: =108
+            ZIndex: =8
+
+        Label24_28 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: ="Item(s)"
+            Width: =296
+            X: =181
+            Y: =114
+            ZIndex: =9
+
+        Icon26 As icon.BackArrow:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =30
+            Icon: =Icon.BackArrow
+            OnSelect: =Set(ProcAdminItemList,false)
+            Width: =54
+            Y: =112
+            ZIndex: =12
+
+        Label24_29 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: ="Vendors"
+            Width: =296
+            X: =791
+            Y: =114
+            ZIndex: =13
+
+        Toggle3 As toggleSwitch:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            FalseFill: =RGBA(39, 113, 194, 1)
+            FalseText: ="Item"
+            FontWeight: =FontWeight.Bold
+            OnCheck: =Set(ProcAdminGLList,true)
+            OnUncheck: =Set(ProcAdminItemList,true)
+            Tooltip: ="Switch to GL"
+            TrueText: ="GL"
+            Width: =100
+            X: =89
+            Y: =117
+            ZIndex: =16
+
+        Group7 As group:
+            Height: =5
+            Width: =5
+            X: =80
+            Y: =80
+            ZIndex: =16
+
+            Rectangle3_8 As rectangle:
+                Fill: =RGBA(0, 94, 146, 1)
+                Height: =50
+                Width: =1366
+                Y: =158
+                ZIndex: =4
+
+            Label24_15 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="       Name                                  Number     Quant.              Specification"
+                Width: =650
+                X: =40
+                Y: =179
+                ZIndex: =5
+
+            Label24_36 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price         PrePay   PPay.Price"
+                Width: =220
+                X: =701
+                Y: =179
+                ZIndex: =6
+
+            Label24_25 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price        PrePay   PPay.Price"
+                Width: =216
+                X: =916
+                Y: =179
+                ZIndex: =10
+
+            Label24_26 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price       PrePay   PPay.Price"
+                Width: =207
+                X: =1126
+                Y: =179
+                ZIndex: =11
+
+            Label24_22 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="Edit"
+                Width: =45
+                X: =5
+                Y: =179
+                ZIndex: =14
+
+            Label24_30 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="           First                                              Second                                   Third"
+                Width: =650
+                X: =700
+                Y: =158
+                ZIndex: =15
+
+    ProcAdmGLContainer As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =768
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =ProcAdminGLList
+        Width: =1366
+        ZIndex: =17
+
+        Image15_1 As image:
+            Height: =659
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1356
+            Y: =109
+            ZIndex: =1
+
+        Rectangle20_1 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =656
+            Width: =1356
+            Y: =109
+            ZIndex: =2
+
+        Gallery11_1 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =553
+            Items: =Filter('Purchase Requisition Line Item','Line ItemID'= Value(ProcAdmin2ID.Text))
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =If(ThisItem.ID in ProcAdminItemsCollection.ID,Color.DarkCyan)
+                //RGBA(0, 0, 0, 0)
+            TemplateSize: =45
+            Visible: =If(DataCardValue21.Selected.Value="G/L Account",true,false)
+            Width: =1355
+            Y: =215
+            ZIndex: =3
+
+            Item_name_1 As text:
+                Default: =ThisItem.'GL Account Name'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Name'
+                Width: =240
+                X: =30
+                Y: =7
+                ZIndex: =1
+
+            Item_no_1 As text:
+                Default: =ThisItem.'GL Account Number'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =131
+                X: =270
+                Y: =7
+                ZIndex: =2
+
+            V3_Disc_Price_1 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).ThirdVendorPrePayPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1265
+                Y: =7
+                ZIndex: =9
+
+            V2_Disc_Price_1 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).SecondVendorPrePayPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1047
+                Y: =7
+                ZIndex: =10
+
+            V1_Disc_Price_1 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).FirstVendorPrePayPrice,"")
+                    
+                    //(Value(V1_Price.Text) * V1PrePayPercValue.Text)
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =832
+                Y: =7
+                ZIndex: =11
+
+            Quantity_Text_9 As text:
+                Default: =ThisItem.Qauntity
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Visible: =false
+                Width: =73
+                X: =357
+                Y: =7
+                ZIndex: =12
+
+            V3_Price_2 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection,ID=ThisItem.ID).OData__x0033_rdVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1129
+                Y: =7
+                ZIndex: =13
+
+            V2_Price_2 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection,ID=ThisItem.ID).OData__x0032_ndVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =913
+                Y: =7
+                ZIndex: =14
+
+            V1_Price_2 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection,ID=ThisItem.ID).OData__x0031_stVendorPrice,"")
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =699
+                Y: =7
+                ZIndex: =15
+
+            Quantity_Text_11 As text:
+                Default: =ThisItem.'GL Account Description'
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                Mode: =TextMode.MultiLine
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Specification'
+                Width: =290
+                X: =400
+                Y: =7
+                ZIndex: =16
+
+            V1_PrepayPerc_1 As text:
+                Default: |-
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).OData__x0031_stVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =772
+                Y: =7
+                ZIndex: =17
+
+            V2_PrepayPerc_1 As text:
+                Default: |
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).OData__x0032_ndVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =987
+                Y: =7
+                ZIndex: =18
+
+            V3_PrepayPerc_1 As text:
+                Default: |
+                    =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                    LookUp(ProcAdminGLCollection, ID = ThisItem.ID).OData__x0033_rdVendorDiscount,"")& "%"
+                DisplayMode: =DisplayMode.View
+                Height: =38
+                OnSelect: =Select(Parent)
+                Width: =60
+                X: =1204
+                Y: =7
+                ZIndex: =19
+
+            Icon27_1 As icon.Edit:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =38
+                Icon: =Icon.Edit
+                OnSelect: =Set(Proc_Admin_GLItem_Details, true)
+                Width: =26
+                Y: =7
+                ZIndex: =20
+
+            PrepayPercValue_1 As group:
+                Height: =5
+                Width: =5
+                X: =80
+                Y: =45
+                ZIndex: =36
+
+                V1PrePayPercValue_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection, ID = ThisItem.ID).FirstVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =60
+                    Y: =5
+                    ZIndex: =33
+
+                V2PrePayPercValue_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection, ID = ThisItem.ID).SecondVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =146
+                    Y: =5
+                    ZIndex: =34
+
+                V3PrePayPercValue_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection, ID = ThisItem.ID).ThirdVendorPercVal,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =71
+                    X: =264
+                    Y: =5
+                    ZIndex: =35
+
+            VendorDetails_1 As group:
+                Height: =5
+                Width: =5
+                X: =100
+                Y: =45
+                ZIndex: =42
+
+                "'First Vendor Name_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection, ID= ThisItem.ID).FirstVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =40
+                    Y: =5
+                    ZIndex: =21
+
+                "'Second Vendor Name_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).SecondVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =443
+                    Y: =5
+                    ZIndex: =22
+
+                "'Third Vendor Name_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).ThirdVendorName,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =752
+                    Y: =5
+                    ZIndex: =23
+
+                "'First Vendor ID_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).FirstVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =120
+                    Y: =5
+                    ZIndex: =24
+
+                "'First Vendor No_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).FirstVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =200
+                    Y: =5
+                    ZIndex: =25
+
+                "'Second Vendor ID_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).SecondVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =507
+                    Y: =5
+                    ZIndex: =26
+
+                "'Second Vendor No_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).SecondVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =587
+                    Y: =5
+                    ZIndex: =27
+
+                "'Third Vendor ID_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).ThirdVendorID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =822
+                    Y: =5
+                    ZIndex: =28
+
+                "'Third Vendor No_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).ThirdVendorNo,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =902
+                    Y: =5
+                    ZIndex: =29
+
+                "'First Vendor CurCode_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).FirstVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =281
+                    Y: =5
+                    ZIndex: =30
+
+                "'Second Vendor CurCode_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).SecondVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =660
+                    Y: =5
+                    ZIndex: =31
+
+                "'Third Vendor CurCode_1' As text":
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID=ThisItem.ID).ThirdVendorCurCode,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =60
+                    X: =988
+                    Y: =5
+                    ZIndex: =32
+
+                V1_PaymentTerms_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).AdvancePayment,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =100
+                    X: =80
+                    Y: =5
+                    ZIndex: =36
+
+                V2_PaymentTerms_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).SecondVendorAdvPaymentTerms,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =85
+                    X: =675
+                    Y: =5
+                    ZIndex: =37
+
+                V3_PaymentTerms_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).ThirdVendorAdvPaymentTerms,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =49
+                    X: =1064
+                    Y: =5
+                    ZIndex: =38
+
+                V1_PaymentTermsID_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).AdvancePaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =100
+                    X: =200
+                    Y: =5
+                    ZIndex: =39
+
+                V2_PaymentTermsID_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).SecondVendorAdvPaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =85
+                    X: =795
+                    Y: =5
+                    ZIndex: =40
+
+                V3_PaymentTermsID_1 As text:
+                    Default: |-
+                        =If(ThisItem.ID in ProcAdminGLCollection.ID,
+                        LookUp(ProcAdminGLCollection,ID= ThisItem.ID).ThirdVendorAdvPaymentID,"")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    Width: =49
+                    X: =1184
+                    Y: =5
+                    ZIndex: =41
+
+        Rectangle44_1 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =46
+            Width: =1356
+            Y: =108
+            ZIndex: =8
+
+        Label24_41 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: ="General Ledger(s)"
+            Width: =296
+            X: =181
+            Y: =114
+            ZIndex: =9
+
+        Icon26_1 As icon.BackArrow:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =30
+            Icon: =Icon.BackArrow
+            OnSelect: |-
+                =Set(ProcAdminGLList,false);
+                Reset(Toggle3)
+            Tooltip: ="Back"
+            Width: =54
+            Y: =112
+            ZIndex: =12
+
+        Label24_42 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: ="Vendors"
+            Width: =296
+            X: =791
+            Y: =114
+            ZIndex: =13
+
+        Group7_1 As group:
+            Height: =5
+            Width: =5
+            X: =80
+            Y: =80
+            ZIndex: =16
+
+            Rectangle3_10 As rectangle:
+                Fill: =RGBA(0, 94, 146, 1)
+                Height: =50
+                Width: =1356
+                Y: =158
+                ZIndex: =4
+
+            Label24_69 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="       Name                                         Number                                  Specification"
+                Width: =650
+                X: =40
+                Y: =179
+                ZIndex: =5
+
+            Label24_71 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price         PrePay   PPay.Price"
+                Width: =220
+                X: =688
+                Y: =179
+                ZIndex: =6
+
+            Label24_72 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price        PrePay   PPay.Price"
+                Width: =216
+                X: =903
+                Y: =179
+                ZIndex: =10
+
+            Label24_76 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Size: =10
+                Text: ="   Price       PrePay   PPay.Price"
+                Width: =207
+                X: =1121
+                Y: =179
+                ZIndex: =11
+
+            Label24_57 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="Edit"
+                Width: =45
+                X: =5
+                Y: =179
+                ZIndex: =14
+
+            Label24_44 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                Text: ="                 First                                   Second                                   Third"
+                Width: =650
+                X: =700
+                Y: =158
+                ZIndex: =15
+
+    ProcAdmItemSellVenCont As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =664
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =Proc_Admin_LineItem_Details
+        Width: =1366
+        Y: =104
+        ZIndex: =18
+
+        Image16 As image:
+            Height: =664
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            ZIndex: =1
+
+        Rectangle24 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =664
+            Width: =1366
+            ZIndex: =2
+
+        Rectangle50 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Width: =1366
+            Y: =5
+            ZIndex: =3
+
+        Label17 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: |-
+                ="Item Name:"
+            Width: =122
+            X: =216
+            Y: =15
+            ZIndex: =4
+
+        Label17_1 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: =Item_name.Text
+            Tooltip: =Label17_1.Text
+            Width: =300
+            Wrap: =false
+            X: =362
+            Y: =15
+            ZIndex: =5
+
+        Label17_2 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: |-
+                ="Item No:"
+            Width: =122
+            X: =759
+            Y: =15
+            ZIndex: =6
+
+        Label17_3 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: =Item_no.Text
+            Tooltip: =Label17_3.Text
+            Wrap: =false
+            X: =905
+            Y: =15
+            ZIndex: =7
+
+        Rectangle51_1 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Width: =1366
+            Y: =282
+            ZIndex: =9
+
+        Rectangle51 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Width: =1366
+            Y: =60
+            ZIndex: =47
+
+        Label22 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =33
+            Text: ="Select Vendor Input Details"
+            Width: =714
+            X: =345
+            Y: =67
+            ZIndex: =48
+
+        Label22_1 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =33
+            Text: ="Vendor Output Details"
+            Width: =714
+            X: =305
+            Y: =282
+            ZIndex: =49
+
+        VendorInput As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =55
+
+            FirstVendor_ComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',FirstVendor_ComboBox.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =259
+                Y: =137
+                ZIndex: =8
+
+            Label17_4 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =38
+                Text: ="First Vendor                                                         Second Vendor                                                             Third Vendor"                
+                Width: =1000
+                X: =305
+                Y: =99
+                ZIndex: =10
+
+            V2Dropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =627
+                Y: =232
+                ZIndex: =14
+
+            V3Dropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =993
+                Y: =232
+                ZIndex: =15
+
+            V1Dropdown As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =259
+                Y: =232
+                ZIndex: =16
+
+            SecondVendor_ComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',SecondVendor_ComboBox.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =627
+                Y: =137
+                ZIndex: =17
+
+            ThirdVendor_ComboBox As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',ThirdVendor_ComboBox.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =993
+                Y: =137
+                ZIndex: =18
+
+            FirstVendorPrice As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =259
+                Y: =200
+                ZIndex: =30
+
+            SecondVendorPrice As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =627
+                Y: =200
+                ZIndex: =31
+
+            ThirdVendorPrice As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =993
+                Y: =200
+                ZIndex: =32
+
+            "'1stAdvPayTermsComboBox' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =259
+                Y: =168
+                ZIndex: =44
+
+            "'3rdAdvPayTermsComboBox' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =993
+                Y: =168
+                ZIndex: =45
+
+            "'2ndAdvPayTermsComboBox' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =627
+                Y: =168
+                ZIndex: =46
+
+            Label17_12 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Name:"
+                Width: =122
+                X: =28
+                Y: =137
+                ZIndex: =54
+
+            Label17_13 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Price:"
+                Width: =122
+                X: =28
+                Y: =200
+                ZIndex: =55
+
+            Label17_14 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Payment Term:"
+                X: =28
+                Y: =168
+                ZIndex: =56
+
+            Label17_15 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Pre.Payment %:"
+                X: =28
+                Y: =232
+                ZIndex: =57
+
+        VendorOutput As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =55
+
+            Label17_5 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Name:"
+                Width: =122
+                X: =30
+                Y: =329
+                ZIndex: =11
+
+            Label17_6 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Price:"
+                Width: =122
+                X: =30
+                Y: =438
+                ZIndex: =12
+
+            Label17_7 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Pre.Pay%:"
+                Width: =122
+                X: =30
+                Y: =469
+                ZIndex: =13
+
+            Label20 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor Name'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =227
+                Y: =324
+                ZIndex: =19
+
+            Label20_1 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor Name'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =599
+                Y: =324
+                ZIndex: =20
+
+            Label20_2 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor Name'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1005
+                Y: =324
+                ZIndex: =21
+
+            Label17_8 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="No:"
+                Width: =122
+                X: =30
+                Y: =360
+                ZIndex: =22
+
+            Label17_9 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Currency Code:"
+                Width: =166
+                X: =30
+                Y: =390
+                ZIndex: =23
+
+            Label20_3 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor No'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =357
+                ZIndex: =24
+
+            Label20_4 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor No'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =357
+                ZIndex: =25
+
+            Label20_5 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor No'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =357
+                ZIndex: =26
+
+            Label20_6 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor CurCode'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =388
+                ZIndex: =27
+
+            Label20_7 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor CurCode'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =388
+                ZIndex: =28
+
+            Label20_8 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor CurCode'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =388
+                ZIndex: =29
+
+            Label20_9 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_Price.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =438
+                ZIndex: =33
+
+            Label20_10 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_Price.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =438
+                ZIndex: =34
+
+            Label20_11 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_Price.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =438
+                ZIndex: =35
+
+            Label20_12 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_PrepayPerc.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =469
+                ZIndex: =36
+
+            Label20_13 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_PrepayPerc.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =469
+                ZIndex: =37
+
+            Label20_14 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_PrepayPerc.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =469
+                ZIndex: =38
+
+            Label17_10 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="PrePayment Price:"
+                Width: =170
+                X: =28
+                Y: =498
+                ZIndex: =39
+
+            Label20_15 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_Disc_Price.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =498
+                ZIndex: =40
+
+            Label20_16 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_Disc_Price.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =498
+                ZIndex: =41
+
+            Label20_17 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_Disc_Price.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =498
+                ZIndex: =42
+
+            Label17_11 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Payment Term:"
+                X: =30
+                Y: =413
+                ZIndex: =50
+
+            Label20_18 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_PaymentTerms.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =413
+                ZIndex: =51
+
+            Label20_19 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_PaymentTerms.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =413
+                ZIndex: =52
+
+            Label20_20 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_PaymentTerms.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =413
+                ZIndex: =53
+
+        Icon48 As icon.CancelBadge:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.CancelBadge
+            OnSelect: =Set(Proc_Admin_LineItem_Details, false)
+            Width: =40
+            Y: =10
+            ZIndex: =58
+
+        Icon49 As icon.Save:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.Save
+            OnSelect: |+
+                =If(
+                    Gallery11.Selected.ID in ProcAdminItemsCollection.ID,
+                    Update(
+                        ProcAdminItemsCollection,
+                        LookUp(
+                            ProcAdminItemsCollection,
+                            ID = Gallery11.Selected.ID
+                        ),
+                        {
+                            ID: Gallery11.Selected.ID,
+                            FirstVendorPrePayPrice:Text(V1Dropdown.Selected.Value*FirstVendorPrice.Text),
+                            SecondVendorPrePayPrice:Text(V2Dropdown.Selected.Value*SecondVendorPrice.Text),
+                            ThirdVendorPrePayPrice:Text(V3Dropdown.Selected.Value*ThirdVendorPrice.Text), 
+                            OData__x0031_stVendorPrice: FirstVendorPrice.Text,
+                            OData__x0031_stVendorDiscount: V1Dropdown.Selected.Name,
+                            OData__x0032_ndVendorDiscount: V2Dropdown.Selected.Name,
+                            OData__x0033_rdVendorDiscount: V3Dropdown.Selected.Name,
+                
+                           /* OData__x0032_stVendorDicsPrice: V2_Disc_Price.Text,
+                            OData__x0033_rdVendorDicsPrice: V3_Disc_Price.Text,*/
+                            OData__x0032_ndVendorPrice: SecondVendorPrice.Text,
+                            OData__x0033_rdVendorPrice: ThirdVendorPrice.Text,
+                            FirstVendorName:FirstVendor_ComboBox.Selected.'Display Name',
+                            FirstVendorID:FirstVendor_ComboBox.Selected.Id,                  
+                            FirstVendorCurCode: FirstVendor_ComboBox.Selected.'Currency Code',               
+                            FirstVendorNo:  FirstVendor_ComboBox.Selected.'No.',            
+                            SecondVendorName:  SecondVendor_ComboBox.Selected.'Display Name',       
+                            SecondVendorID:SecondVendor_ComboBox.Selected.Id,       
+                            SecondVendorCurCode: SecondVendor_ComboBox.Selected.'Currency Code',              
+                            SecondVendorNo: SecondVendor_ComboBox.Selected.'No.',          
+                            ThirdVendorName:  ThirdVendor_ComboBox.Selected.'Display Name',         
+                            ThirdVendorID: ThirdVendor_ComboBox.Selected.Id,              
+                            ThirdVendorNo:  ThirdVendor_ComboBox.Selected.'No.',              
+                            ThirdVendorCurCode: ThirdVendor_ComboBox.Selected.'Currency Code',
+                            FirstVendorPercVal: Text(V1Dropdown.Selected.Value),
+                            SecondVendorPercVal: Text(V2Dropdown.Selected.Value),
+                            ThirdVendorPercVal: Text(V3Dropdown.Selected.Value),
+                            AdvancePayment: Text('1stAdvPayTermsComboBox'.Selected.'Display Name'),
+                            AdvancePaymentID: Text('1stAdvPayTermsComboBox'.Selected.Id),   
+                            SecondVendorAdvPaymentTerms: Text('2ndAdvPayTermsComboBox'.Selected.'Display Name'),
+                            SecondVendorAdvPaymentID: Text('2ndAdvPayTermsComboBox'.Selected.Id),  
+                            ThirdVendorAdvPaymentTerms: Text('3rdAdvPayTermsComboBox'.Selected.'Display Name'),
+                            ThirdVendorAdvPaymentID: Text('3rdAdvPayTermsComboBox'.Selected.Id),
+                            RequesterComment:Req_Comment.Text
+                 
+                        }
+                    ),
+                    Collect(
+                        ProcAdminItemsCollection,
+                        {
+                            ID: Gallery11.Selected.ID,
+                            FirstVendorPrePayPrice:Text(V1Dropdown.Selected.Value*FirstVendorPrice.Text),
+                            SecondVendorPrePayPrice:Text(V2Dropdown.Selected.Value*SecondVendorPrice.Text),
+                            ThirdVendorPrePayPrice:Text(V3Dropdown.Selected.Value*ThirdVendorPrice.Text),            
+                            OData__x0031_stVendorPrice: FirstVendorPrice.Text,
+                            OData__x0031_stVendorDiscount: V1Dropdown.Selected.Name,
+                            OData__x0032_ndVendorDiscount: V2Dropdown.Selected.Name,
+                            OData__x0033_rdVendorDiscount: V3Dropdown.Selected.Name,
+                
+                            /*OData__x0032_stVendorDicsPrice: V2_Disc_Price.Text,
+                            OData__x0033_rdVendorDicsPrice: V3_Disc_Price.Text,*/
+                            OData__x0032_ndVendorPrice: SecondVendorPrice.Text,
+                            OData__x0033_rdVendorPrice: ThirdVendorPrice.Text,
+                            FirstVendorName:FirstVendor_ComboBox.Selected.'Display Name',
+                            FirstVendorID:FirstVendor_ComboBox.Selected.Id,                  
+                            FirstVendorCurCode: FirstVendor_ComboBox.Selected.'Currency Code',               
+                            FirstVendorNo:  FirstVendor_ComboBox.Selected.'No.',            
+                            SecondVendorName:  SecondVendor_ComboBox.Selected.'Display Name',       
+                            SecondVendorID:SecondVendor_ComboBox.Selected.Id,       
+                            SecondVendorCurCode: SecondVendor_ComboBox.Selected.'Currency Code',              
+                            SecondVendorNo: SecondVendor_ComboBox.Selected.'No.',          
+                            ThirdVendorName:  ThirdVendor_ComboBox.Selected.'Display Name',         
+                            ThirdVendorID: ThirdVendor_ComboBox.Selected.Id,              
+                            ThirdVendorNo:  ThirdVendor_ComboBox.Selected.'No.',              
+                            ThirdVendorCurCode: ThirdVendor_ComboBox.Selected.'Currency Code',
+                            FirstVendorPercVal: Text(V1Dropdown.Selected.Value),
+                            SecondVendorPercVal: Text(V2Dropdown.Selected.Value),
+                            ThirdVendorPercVal: Text(V3Dropdown.Selected.Value),
+                            AdvancePayment: Text('1stAdvPayTermsComboBox'.Selected.'Display Name'),
+                            AdvancePaymentID: Text('1stAdvPayTermsComboBox'.Selected.Id),   
+                            SecondVendorAdvPaymentTerms: Text('2ndAdvPayTermsComboBox'.Selected.'Display Name'),
+                            SecondVendorAdvPaymentID: Text('2ndAdvPayTermsComboBox'.Selected.Id),  
+                            ThirdVendorAdvPaymentTerms: Text('3rdAdvPayTermsComboBox'.Selected.'Display Name'),
+                            ThirdVendorAdvPaymentID: Text('3rdAdvPayTermsComboBox'.Selected.Id),
+                            RequesterComment:Req_Comment.Text
+                
+                        }
+                    )
+                );
+                UpdateContext({varNotification:true})
+                ;
+                /*Notify(
+                    "Line Item saved",
+                    NotificationType.Success
+                );*/
+                Reset(FirstVendorPrice);
+                Reset(SecondVendorPrice);
+                Reset(ThirdVendorPrice);
+                Reset(FirstVendor_ComboBox);
+                Reset(SecondVendor_ComboBox);
+                Reset(ThirdVendor_ComboBox);
+                Reset(V1Dropdown);
+                Reset(V2Dropdown);
+                Reset(V3Dropdown);
+                Reset('1stAdvPayTermsComboBox');
+                Reset('2ndAdvPayTermsComboBox');
+                Reset('3rdAdvPayTermsComboBox');
+                
+            Width: =40
+            X: =1305
+            Y: =10
+            ZIndex: =59
+
+        Label8 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Text: ="Save"
+            Width: =60
+            X: =1244
+            Y: =13
+            ZIndex: =60
+
+        Label8_1 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Text: ="Close"
+            Width: =60
+            X: =40
+            Y: =15
+            ZIndex: =61
+
+    ProcAdmGLSellVenCont As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =664
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =Proc_Admin_GLItem_Details
+        Width: =1366
+        Y: =104
+        ZIndex: =20
+
+        Image16_1 As image:
+            Height: =664
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            ZIndex: =1
+
+        Rectangle24_1 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =664
+            Width: =1366
+            ZIndex: =2
+
+        Rectangle50_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Width: =1366
+            Y: =5
+            ZIndex: =3
+
+        Label17_16 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: |-
+                ="GL Account Name:"
+            Width: =180
+            X: =196
+            Y: =15
+            ZIndex: =4
+
+        Label17_17 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: =Item_name_1.Text
+            Tooltip: =Label17_17.Text
+            Width: =300
+            Wrap: =false
+            X: =362
+            Y: =15
+            ZIndex: =5
+
+        Label17_18 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: |-
+                ="GL Account No:"
+            Width: =200
+            X: =759
+            Y: =15
+            ZIndex: =6
+
+        Label17_19 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =30
+            Text: =Item_no_1.Text
+            Tooltip: =Label17_19.Text
+            Wrap: =false
+            X: =905
+            Y: =15
+            ZIndex: =7
+
+        Rectangle51_3 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Width: =1366
+            Y: =282
+            ZIndex: =9
+
+        Rectangle51_2 As rectangle:
+            Fill: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Width: =1366
+            Y: =60
+            ZIndex: =47
+
+        Label22_2 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =33
+            Text: ="Select Vendor Input Details"
+            Width: =714
+            X: =345
+            Y: =67
+            ZIndex: =48
+
+        Label22_3 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =33
+            Text: ="Vendor Output Details"
+            Width: =714
+            X: =305
+            Y: =282
+            ZIndex: =49
+
+        VendorInput_1 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =55
+
+            FirstVendor_ComboBox_1 As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',FirstVendor_ComboBox_1.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =259
+                Y: =137
+                ZIndex: =8
+
+            Label17_20 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =38
+                Text: ="First Vendor                                                         Second Vendor                                                             Third Vendor"                
+                Width: =1000
+                X: =305
+                Y: =99
+                ZIndex: =10
+
+            V2Dropdown_1 As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =627
+                Y: =232
+                ZIndex: =14
+
+            V3Dropdown_1 As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =993
+                Y: =232
+                ZIndex: =15
+
+            V1Dropdown_1 As dropdown:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                Default: ="0"
+                Height: =30
+                Items: =Discount
+                Width: =90
+                X: =259
+                Y: =232
+                ZIndex: =16
+
+            SecondVendor_ComboBox_1 As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',SecondVendor_ComboBox_1.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =627
+                Y: =137
+                ZIndex: =17
+
+            ThirdVendor_ComboBox_1 As combobox:
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                Items: ='vendors (v2.0)_1'
+                SearchFields: =["displayName"]
+                SearchItems: =Search('vendors (v2.0)_1',ThirdVendor_ComboBox_1.SearchText,"displayName")
+                SelectMultiple: =false
+                Width: =320
+                X: =993
+                Y: =137
+                ZIndex: =18
+
+            FirstVendorPrice_1 As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =259
+                Y: =200
+                ZIndex: =30
+
+            SecondVendorPrice_1 As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =627
+                Y: =200
+                ZIndex: =31
+
+            ThirdVendorPrice_1 As text:
+                Default: =
+                Format: =TextFormat.Number
+                Height: =30
+                Width: =200
+                X: =993
+                Y: =200
+                ZIndex: =32
+
+            "'1stAdvPayTermsComboBox_1' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =259
+                Y: =168
+                ZIndex: =44
+
+            "'3rdAdvPayTermsComboBox_1' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =993
+                Y: =168
+                ZIndex: =45
+
+            "'2ndAdvPayTermsComboBox_1' As combobox":
+                ChevronBackground: =RGBA(255, 255, 255, 1)
+                ChevronFill: =RGBA(0, 94, 146, 1)
+                DisplayFields: =["displayName"]
+                Height: =30
+                IsSearchable: =false
+                Items: ='paymentTerms (v2.0)'
+                SearchFields: =["displayName"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Width: =320
+                X: =627
+                Y: =168
+                ZIndex: =46
+
+            Label17_21 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Name:"
+                Width: =122
+                X: =28
+                Y: =137
+                ZIndex: =54
+
+            Label17_23 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Price:"
+                Width: =122
+                X: =28
+                Y: =200
+                ZIndex: =55
+
+            Label17_22 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Payment Term:"
+                X: =28
+                Y: =168
+                ZIndex: =56
+
+            Label17_24 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Pre.Payment %:"
+                X: =28
+                Y: =232
+                ZIndex: =57
+
+        VendorOutput_1 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =55
+
+            Label17_25 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Name:"
+                Width: =122
+                X: =30
+                Y: =329
+                ZIndex: =11
+
+            Label17_29 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Price:"
+                Width: =122
+                X: =30
+                Y: =438
+                ZIndex: =12
+
+            Label17_30 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Pre.Pay%:"
+                Width: =122
+                X: =30
+                Y: =469
+                ZIndex: =13
+
+            Label20_21 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor Name_1'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =227
+                Y: =324
+                ZIndex: =19
+
+            Label20_22 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor Name_1'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =599
+                Y: =324
+                ZIndex: =20
+
+            Label20_23 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor Name_1'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1005
+                Y: =324
+                ZIndex: =21
+
+            Label17_26 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="No:"
+                Width: =122
+                X: =30
+                Y: =360
+                ZIndex: =22
+
+            Label17_27 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Currency Code:"
+                Width: =166
+                X: =30
+                Y: =390
+                ZIndex: =23
+
+            Label20_24 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor No_1'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =357
+                ZIndex: =24
+
+            Label20_25 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor No_1'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =357
+                ZIndex: =25
+
+            Label20_26 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor No_1'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =357
+                ZIndex: =26
+
+            Label20_27 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='First Vendor CurCode_1'.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =388
+                ZIndex: =27
+
+            Label20_28 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Second Vendor CurCode_1'.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =388
+                ZIndex: =28
+
+            Label20_29 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ='Third Vendor CurCode_1'.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =388
+                ZIndex: =29
+
+            Label20_33 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_Price_2.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =438
+                ZIndex: =33
+
+            Label20_34 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_Price_2.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =438
+                ZIndex: =34
+
+            Label20_35 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_Price_2.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =438
+                ZIndex: =35
+
+            Label20_36 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_PrepayPerc_1.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =469
+                ZIndex: =36
+
+            Label20_37 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_PrepayPerc_1.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =469
+                ZIndex: =37
+
+            Label20_38 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_PrepayPerc_1.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =469
+                ZIndex: =38
+
+            Label17_31 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="PrePayment Price:"
+                Width: =170
+                X: =28
+                Y: =498
+                ZIndex: =39
+
+            Label20_39 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_Disc_Price_1.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =498
+                ZIndex: =40
+
+            Label20_40 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_Disc_Price_1.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =498
+                ZIndex: =41
+
+            Label20_41 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_Disc_Price_1.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =498
+                ZIndex: =42
+
+            Label17_28 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: |-
+                    ="Payment Term:"
+                X: =30
+                Y: =413
+                ZIndex: =50
+
+            Label20_30 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V1_PaymentTerms_1.Text
+                Tooltip: ='First Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =226
+                Y: =413
+                ZIndex: =51
+
+            Label20_31 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V2_PaymentTerms_1.Text
+                Tooltip: ='Second Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =598
+                Y: =413
+                ZIndex: =52
+
+            Label20_32 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: =V3_PaymentTerms_1.Text
+                Tooltip: ='Third Vendor Name'.Text
+                Width: =336
+                Wrap: =false
+                X: =1004
+                Y: =413
+                ZIndex: =53
+
+        Icon48_1 As icon.CancelBadge:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.CancelBadge
+            OnSelect: =Set(Proc_Admin_GLItem_Details, false)
+            Width: =40
+            Y: =10
+            ZIndex: =58
+
+        Icon49_1 As icon.Save:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =40
+            Icon: =Icon.Save
+            OnSelect: |+
+                =If(
+                    Gallery11_1.Selected.ID in ProcAdminGLCollection.ID,
+                    Update(
+                        ProcAdminGLCollection,
+                        LookUp(
+                            ProcAdminGLCollection,
+                            ID = Gallery11_1.Selected.ID
+                        ),
+                        {
+                            ID: Gallery11_1.Selected.ID,
+                            FirstVendorPrePayPrice:Text(V1Dropdown_1.Selected.Value*FirstVendorPrice_1.Text),
+                            SecondVendorPrePayPrice:Text(V2Dropdown_1.Selected.Value*SecondVendorPrice_1.Text),
+                            ThirdVendorPrePayPrice:Text(V3Dropdown_1.Selected.Value*ThirdVendorPrice_1.Text), 
+                            OData__x0031_stVendorPrice: FirstVendorPrice_1.Text,
+                            OData__x0031_stVendorDiscount: V1Dropdown_1.Selected.Name,
+                            OData__x0032_ndVendorDiscount: V2Dropdown_1.Selected.Name,
+                            OData__x0033_rdVendorDiscount: V3Dropdown_1.Selected.Name,
+                
+                           /* OData__x0032_stVendorDicsPrice: V2_Disc_Price.Text,
+                            OData__x0033_rdVendorDicsPrice: V3_Disc_Price.Text,*/
+                            OData__x0032_ndVendorPrice: SecondVendorPrice_1.Text,
+                            OData__x0033_rdVendorPrice: ThirdVendorPrice_1.Text,
+                            FirstVendorName:FirstVendor_ComboBox_1.Selected.'Display Name',
+                            FirstVendorID:FirstVendor_ComboBox_1.Selected.Id,                  
+                            FirstVendorCurCode: FirstVendor_ComboBox_1.Selected.'Currency Code',               
+                            FirstVendorNo:  FirstVendor_ComboBox_1.Selected.'No.',            
+                            SecondVendorName:  SecondVendor_ComboBox_1.Selected.'Display Name',       
+                            SecondVendorID:SecondVendor_ComboBox_1.Selected.Id,       
+                            SecondVendorCurCode: SecondVendor_ComboBox_1.Selected.'Currency Code',              
+                            SecondVendorNo: SecondVendor_ComboBox_1.Selected.'No.',          
+                            ThirdVendorName:  ThirdVendor_ComboBox_1.Selected.'Display Name',         
+                            ThirdVendorID: ThirdVendor_ComboBox_1.Selected.Id,              
+                            ThirdVendorNo:  ThirdVendor_ComboBox_1.Selected.'No.',              
+                            ThirdVendorCurCode: ThirdVendor_ComboBox_1.Selected.'Currency Code',
+                            FirstVendorPercVal: Text(V1Dropdown_1.Selected.Value),
+                            SecondVendorPercVal: Text(V2Dropdown_1.Selected.Value),
+                            ThirdVendorPercVal: Text(V3Dropdown_1.Selected.Value),
+                            AdvancePayment: Text('1stAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            AdvancePaymentID: Text('1stAdvPayTermsComboBox_1'.Selected.Id),   
+                            SecondVendorAdvPaymentTerms: Text('2ndAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            SecondVendorAdvPaymentID: Text('2ndAdvPayTermsComboBox_1'.Selected.Id),  
+                            ThirdVendorAdvPaymentTerms: Text('3rdAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            ThirdVendorAdvPaymentID: Text('3rdAdvPayTermsComboBox_1'.Selected.Id),
+                            RequesterComment:Req_Comment.Text
+                 
+                 
+                        }
+                    ),
+                    Collect(
+                        ProcAdminGLCollection,
+                        {
+                            ID: Gallery11_1.Selected.ID,
+                            FirstVendorPrePayPrice:Text(V1Dropdown_1.Selected.Value*FirstVendorPrice_1.Text),
+                            SecondVendorPrePayPrice:Text(V2Dropdown_1.Selected.Value*SecondVendorPrice_1.Text),
+                            ThirdVendorPrePayPrice:Text(V3Dropdown_1.Selected.Value*ThirdVendorPrice_1.Text),            
+                            OData__x0031_stVendorPrice: FirstVendorPrice_1.Text,
+                            OData__x0031_stVendorDiscount: V1Dropdown_1.Selected.Name,
+                            OData__x0032_ndVendorDiscount: V2Dropdown_1.Selected.Name,
+                            OData__x0033_rdVendorDiscount: V3Dropdown_1.Selected.Name,
+                
+                            /*OData__x0032_stVendorDicsPrice: V2_Disc_Price.Text,
+                            OData__x0033_rdVendorDicsPrice: V3_Disc_Price.Text,*/
+                            OData__x0032_ndVendorPrice: SecondVendorPrice_1.Text,
+                            OData__x0033_rdVendorPrice: ThirdVendorPrice_1.Text,
+                            FirstVendorName:FirstVendor_ComboBox_1.Selected.'Display Name',
+                            FirstVendorID:FirstVendor_ComboBox_1.Selected.Id,                  
+                            FirstVendorCurCode: FirstVendor_ComboBox_1.Selected.'Currency Code',               
+                            FirstVendorNo:  FirstVendor_ComboBox_1.Selected.'No.',            
+                            SecondVendorName:  SecondVendor_ComboBox_1.Selected.'Display Name',       
+                            SecondVendorID:SecondVendor_ComboBox_1.Selected.Id,       
+                            SecondVendorCurCode: SecondVendor_ComboBox_1.Selected.'Currency Code',              
+                            SecondVendorNo: SecondVendor_ComboBox_1.Selected.'No.',          
+                            ThirdVendorName:  ThirdVendor_ComboBox_1.Selected.'Display Name',         
+                            ThirdVendorID: ThirdVendor_ComboBox_1.Selected.Id,              
+                            ThirdVendorNo:  ThirdVendor_ComboBox_1.Selected.'No.',              
+                            ThirdVendorCurCode: ThirdVendor_ComboBox_1.Selected.'Currency Code',
+                            FirstVendorPercVal: Text(V1Dropdown_1.Selected.Value),
+                            SecondVendorPercVal: Text(V2Dropdown_1.Selected.Value),
+                            ThirdVendorPercVal: Text(V3Dropdown_1.Selected.Value),
+                            AdvancePayment: Text('1stAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            AdvancePaymentID: Text('1stAdvPayTermsComboBox_1'.Selected.Id),   
+                            SecondVendorAdvPaymentTerms: Text('2ndAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            SecondVendorAdvPaymentID: Text('2ndAdvPayTermsComboBox_1'.Selected.Id),  
+                            ThirdVendorAdvPaymentTerms: Text('3rdAdvPayTermsComboBox_1'.Selected.'Display Name'),
+                            ThirdVendorAdvPaymentID: Text('3rdAdvPayTermsComboBox_1'.Selected.Id),
+                            RequesterComment:Req_Comment.Text
+                 
+                
+                        }
+                    )
+                );
+                UpdateContext({varNotification:true})
+                ;
+                /*Notify(
+                    "Line Item saved",
+                    NotificationType.Success
+                );*/
+                Reset(FirstVendorPrice_1);
+                Reset(SecondVendorPrice_1);
+                Reset(ThirdVendorPrice_1);
+                Reset(FirstVendor_ComboBox_1);
+                Reset(SecondVendor_ComboBox_1);
+                Reset(ThirdVendor_ComboBox_1);
+                Reset(V1Dropdown_1);
+                Reset(V2Dropdown_1);
+                Reset(V3Dropdown_1);
+                Reset('1stAdvPayTermsComboBox_1');
+                Reset('2ndAdvPayTermsComboBox_1');
+                Reset('3rdAdvPayTermsComboBox_1');
+                
+            Width: =40
+            X: =1305
+            Y: =10
+            ZIndex: =59
+
+        Label8_2 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Text: ="Save"
+            Width: =60
+            X: =1244
+            Y: =13
+            ZIndex: =60
+
+        Label8_3 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Text: ="Close"
+            Width: =60
+            X: =40
+            Y: =15
+            ZIndex: =61
+
+    Timer2 As timer:
+        Duration: =1000
+        OnTimerEnd: |-
+            =UpdateContext({varNotification:false})
+        Start: =varNotification
+        Visible: =false
+        X: =149
+        Y: =51
+        ZIndex: =22
+
+    Label29 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =ProcAdminRequestID.Text
+        X: =637
+        ZIndex: =23
+
+    Icon24 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =50
+        Icon: =Icon.Home
+        OnSelect: |-
+            =Navigate('Home Screen');
+            Set(ProcAdminItemList,false);
+            Set(ProcAdminGLList,false);
+            Reset(Toggle3);
+            Navigate('PA Approval');
+            Reset(V1Dropdown);
+            Reset(V2Dropdown);
+            Reset(V3Dropdown);
+            Clear(ProcAdminItemsCollection);
+            Clear(ProcAdminGLCollection);
+            Reset(FirstVendorPrice);
+            Reset(SecondVendorPrice);
+            Reset(ThirdVendorPrice);
+            Reset(FirstVendor_ComboBox);
+            Reset(SecondVendor_ComboBox);
+            Reset(ThirdVendor_ComboBox);
+            Reset(V1Dropdown);
+            Reset(V2Dropdown);
+            Reset(V3Dropdown);
+        Width: =50
+        X: =338
+        Y: =17
+        ZIndex: =24
+
+    Notification As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =47
+
+        Rectangle28 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =41
+            Visible: =varNotification
+            Width: =1200
+            X: =70
+            Y: =110
+            ZIndex: =19
+
+        Label26 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =41
+            Text: ="Line Item Updated"
+            Visible: =varNotification
+            Width: =280
+            X: =507
+            Y: =110
+            ZIndex: =21
+

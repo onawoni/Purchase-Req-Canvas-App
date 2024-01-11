@@ -1,0 +1,2415 @@
+Approval As screen:
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle6 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =767
+        Width: =1366
+        Y: =1
+        ZIndex: =1
+
+    RegForm_9 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =108
+        Size: =20
+        Text: ="Manager's Approval"
+        Width: =1366
+        ZIndex: =2
+
+    LadoImage_4 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =3
+
+    Form4 As form:
+        DataSource: ='Ladol Test List'
+        Height: =562
+        Item: =varRecordInspection
+        OnSuccess: |+
+            =Set(varRecordInspectionFormID, Form4.LastSubmit.ID);
+            Set(varRecordInspection, Form4.LastSubmit);
+            Office365Outlook.SendEmailV2("procureadmin@ladol.com", "New Requisition", "Hello Procurement Admin, <br> <br> You have a new aproval request from "&varRecordInspection.'Staff Name'&".  <br> For details, click  <a href='https://apps.powerapps.com/play/2f425879-e5e5-471c-9e66-75db29ece8db?RID="&varRecordInspectionFormID&"'>here</a>");
+            
+        SnapToColumns: =false
+        Width: =1364
+        Y: =165
+        ZIndex: =4
+
+        "'Service Type_DataCard2' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ServiceType"
+            Default: =ThisItem.'Service Type'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ServiceType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Type_of_service.Selected
+            Width: =454
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey16 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            Type_of_service As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =DisplayMode.View
+                IsSearchable: =false
+                Items: =Choices([@'Ladol Test List'].'Service Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey16.Y + DataCardKey16.Height + 5
+                ZIndex: =2
+
+            ErrorMessage16 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =Type_of_service.Y + Type_of_service.Height
+                ZIndex: =3
+
+            StarVisible16 As label:
+                Align: =Align.Center
+                Height: =DataCardKey16.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey16.Y
+                ZIndex: =4
+
+        "'Requester Comment_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="RequesterComment"
+            Default: =ThisItem.'Requester Comment'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"RequesterComment")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =204
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "RequesterComment")
+            Required: =false
+            Update: =DataCardValue13.Text
+            Width: =454
+            X: =2
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey18 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue13 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                Height: =147
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey18.Y + DataCardKey18.Height + 5
+                ZIndex: =2
+
+            ErrorMessage18 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue13.Y + DataCardValue13.Height
+                ZIndex: =3
+
+            StarVisible18 As label:
+                Align: =Align.Center
+                Height: =DataCardKey18.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey18.Y
+                ZIndex: =4
+
+        "'Approval Comment_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Comment"
+            Default: =ThisItem.'Approval Comment'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Comment")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =193
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Comment")
+            Required: =true
+            Update: =CommentDataCardValue3.Text
+            Width: =1364
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey24 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            CommentDataCardValue3 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Clear: =true
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                EnableSpellCheck: =true
+                Fill: =RGBA(202, 202, 202, 1)
+                Height: =135
+                HintText: ="Input Comment"
+                MaxLength: =Parent.MaxLength
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey24.Y + DataCardKey24.Height + 5
+                ZIndex: =2
+
+            ErrorMessage24 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =CommentDataCardValue3.Y + CommentDataCardValue3.Height
+                ZIndex: =3
+
+            StarVisible24 As label:
+                Align: =Align.Center
+                Height: =DataCardKey24.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey24.Y
+                ZIndex: =4
+
+        "'Default Vendor ID_DataCard1' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DefaultVendorID"
+            Default: =ThisItem.'Default Vendor ID'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"DefaultVendorID")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "DefaultVendorID")
+            Required: =false
+            Update: =DataCardValue32.Text
+            Visible: =false
+            Width: =454
+            X: =1
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey94 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue32 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: ="fa206067-2cad-ed11-9a88-0022481353bd"
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey94.Y + DataCardKey94.Height + 5
+                ZIndex: =2
+
+            ErrorMessage93 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue32.Y + DataCardValue32.Height
+                ZIndex: =3
+
+            StarVisible93 As label:
+                Align: =Align.Center
+                Height: =DataCardKey94.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey94.Y
+                ZIndex: =4
+
+        "'G/L Account No._DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="G_x002f_LAccountNo_x002e_"
+            Default: =ThisItem.'G/L Account No.'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"G_x002f_LAccountNo_x002e_")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "G_x002f_LAccountNo_x002e_")
+            Required: =false
+            Update: =DataCardValue7.Text
+            Visible: =false
+            Width: =454
+            X: =2
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey9 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey9.Y + DataCardKey9.Height + 5
+                ZIndex: =2
+
+            ErrorMessage9 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue7.Y + DataCardValue7.Height
+                ZIndex: =3
+
+            StarVisible9 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey9.Y
+                ZIndex: =4
+
+        Approver_DataCard2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Approver"
+            Default: =ThisItem.Approver
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Approver")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Approver")
+            Required: =false
+            Update: =DataCardValue1.Text
+            Visible: =false
+            Width: =454
+            X: =1
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey2 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue1 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey2.Y + DataCardKey2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue1.Y + DataCardValue1.Height
+                ZIndex: =3
+
+            StarVisible2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey2.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey2.Y
+                ZIndex: =4
+
+        "'Request ID_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="RequestID"
+            Default: =ThisItem.'Request ID'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"RequestID")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "RequestID")
+            Required: =false
+            Update: =ManagerRequest_ID.Text
+            Visible: =false
+            Width: =454
+            X: =1
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey4 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            ManagerRequest_ID As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey4.Y + DataCardKey4.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =ManagerRequest_ID.Y + ManagerRequest_ID.Height
+                ZIndex: =3
+
+            StarVisible4 As label:
+                Align: =Align.Center
+                Height: =DataCardKey4.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey4.Y
+                ZIndex: =4
+
+        "'Staff Name_DataCard5' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffName"
+            Default: =ThisItem.'Staff Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"StaffName")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "StaffName")
+            Required: =false
+            Update: =DataCardValue62.Text
+            Width: =454
+            X: =0
+            Y: =0
+            ZIndex: =11
+
+            DataCardKey68 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue62 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode.View
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey68.Y + DataCardKey68.Height + 5
+                ZIndex: =2
+
+            ErrorMessage65 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue62.Y + DataCardValue62.Height
+                ZIndex: =3
+
+            StarVisible65 As label:
+                Align: =Align.Center
+                Height: =DataCardKey68.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey68.Y
+                ZIndex: =4
+
+        "'Staff Email_DataCard5' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StaffEmail"
+            Default: =ThisItem.'Staff Email'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"StaffEmail")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "StaffEmail")
+            Required: =false
+            Update: =DataCardValue63.Text
+            Width: =454
+            X: =1
+            Y: =0
+            ZIndex: =11
+
+            DataCardKey69 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue63 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode.View
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey69.Y + DataCardKey69.Height + 5
+                ZIndex: =2
+
+            ErrorMessage66 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue63.Y + DataCardValue63.Height
+                ZIndex: =3
+
+            StarVisible66 As label:
+                Align: =Align.Center
+                Height: =DataCardKey69.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey69.Y
+                ZIndex: =4
+
+        Date_DataCard5 As typedDataCard.dateEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Date"
+            Default: =ThisItem.Date
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Date")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue64.SelectedDate
+            Width: =454
+            X: =2
+            Y: =0
+            ZIndex: =11
+
+            DataCardKey70 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue64 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Fill: =RGBA(202, 202, 202, 1)
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey70.Y + DataCardKey70.Height + 5
+                ZIndex: =2
+
+            ErrorMessage67 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue64.Y + DataCardValue64.Height
+                ZIndex: =3
+
+            StarVisible67 As label:
+                Align: =Align.Center
+                Height: =DataCardKey70.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey70.Y
+                ZIndex: =4
+
+        Department_DataCard6 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Department"
+            Default: =ThisItem.Dimension
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Department")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Department")
+            Required: =false
+            Update: =DataCardValue65.Text
+            Width: =454
+            X: =0
+            Y: =1
+            ZIndex: =11
+
+            DataCardKey71 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue65 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey71.Y + DataCardKey71.Height + 5
+                ZIndex: =2
+
+            ErrorMessage68 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue65.Y + DataCardValue65.Height
+                ZIndex: =3
+
+            StarVisible68 As label:
+                Align: =Align.Center
+                Height: =DataCardKey71.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey71.Y
+                ZIndex: =4
+
+        "'Department Type_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentType"
+            Default: =ThisItem.'Department Type'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"DepartmentType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "DepartmentType")
+            Required: =false
+            Update: =DataCardValue77.Text
+            Width: =454
+            X: =1
+            Y: =1
+            ZIndex: =11
+
+            DataCardKey83 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue77 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey83.Y + DataCardKey83.Height + 5
+                ZIndex: =2
+
+            ErrorMessage80 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue77.Y + DataCardValue77.Height
+                ZIndex: =3
+
+            StarVisible80 As label:
+                Align: =Align.Center
+                Height: =DataCardKey83.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey83.Y
+                ZIndex: =4
+
+        "'Department Code_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="DepartmentCode"
+            Default: =ThisItem.'Department Code'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"DepartmentCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "DepartmentCode")
+            Required: =false
+            Update: =DataCardValue78.Text
+            Width: =454
+            X: =2
+            Y: =1
+            ZIndex: =11
+
+            DataCardKey84 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue78 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey84.Y + DataCardKey84.Height + 5
+                ZIndex: =2
+
+            ErrorMessage81 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue78.Y + DataCardValue78.Height
+                ZIndex: =3
+
+            StarVisible81 As label:
+                Align: =Align.Center
+                Height: =DataCardKey84.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey84.Y
+                ZIndex: =4
+
+        Site_DataCard2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Site"
+            Default: =ThisItem.Dimensions
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Site")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "Site")
+            Required: =false
+            Update: =DataCardValue79.Text
+            Width: =454
+            X: =0
+            Y: =2
+            ZIndex: =11
+
+            DataCardKey85 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue79 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey85.Y + DataCardKey85.Height + 5
+                ZIndex: =2
+
+            ErrorMessage82 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue79.Y + DataCardValue79.Height
+                ZIndex: =3
+
+            StarVisible82 As label:
+                Align: =Align.Center
+                Height: =DataCardKey85.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey85.Y
+                ZIndex: =4
+
+        "'Site Code_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="SiteCode"
+            Default: =ThisItem.'Site Code'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"SiteCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "SiteCode")
+            Required: =false
+            Update: =DataCardValue80.Text
+            Width: =454
+            X: =1
+            Y: =2
+            ZIndex: =11
+
+            DataCardKey86 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue80 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey86.Y + DataCardKey86.Height + 5
+                ZIndex: =2
+
+            ErrorMessage83 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue80.Y + DataCardValue80.Height
+                ZIndex: =3
+
+            StarVisible83 As label:
+                Align: =Align.Center
+                Height: =DataCardKey86.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey86.Y
+                ZIndex: =4
+
+        "'Project Type_DataCard5' As typedDataCard.comboBoxEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ProjectType"
+            Default: =ThisItem.'Project Type'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ProjectType")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue73.Selected
+            Width: =454
+            X: =2
+            Y: =2
+            ZIndex: =11
+
+            DataCardKey79 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue73 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                IsSearchable: =false
+                Items: =Choices([@'Ladol Test List'].'Project Type')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey79.Y + DataCardKey79.Height + 5
+                ZIndex: =2
+
+            ErrorMessage76 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue73.Y + DataCardValue73.Height
+                ZIndex: =3
+
+            StarVisible76 As label:
+                Align: =Align.Center
+                Height: =DataCardKey79.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey79.Y
+                ZIndex: =4
+
+        "'Budget Name_DataCard4' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="BudgetName"
+            Default: =ThisItem.'Budget Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"BudgetName")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "BudgetName")
+            Required: =false
+            Update: =DataCardValue68.Text
+            Width: =454
+            X: =0
+            Y: =3
+            ZIndex: =11
+
+            DataCardKey74 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue68 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey74.Y + DataCardKey74.Height + 5
+                ZIndex: =2
+
+            ErrorMessage71 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue68.Y + DataCardValue68.Height
+                ZIndex: =3
+
+            StarVisible71 As label:
+                Align: =Align.Center
+                Height: =DataCardKey74.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey74.Y
+                ZIndex: =4
+
+        Budget_DataCard4 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Budget"
+            Default: =ThisItem.Budget
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"Budget")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =Value(DataCardValue67.Text)
+            Width: =454
+            X: =1
+            Y: =3
+            ZIndex: =11
+
+            DataCardKey73 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue67 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                Format: =TextFormat.Number
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey73.Y + DataCardKey73.Height + 5
+                ZIndex: =2
+
+            ErrorMessage70 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue67.Y + DataCardValue67.Height
+                ZIndex: =3
+
+            StarVisible70 As label:
+                Align: =Align.Center
+                Height: =DataCardKey73.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey73.Y
+                ZIndex: =4
+
+        "'Expected Receipt Date_DataCard4' As typedDataCard.dateEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="ExpectedReceiptDate"
+            Default: =ThisItem.'Expected Receipt Date'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"ExpectedReceiptDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue75.SelectedDate
+            Width: =454
+            X: =2
+            Y: =3
+            ZIndex: =11
+
+            DataCardKey81 As label:
+                AutoHeight: =true
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue75 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                DefaultDate: =Parent.Default
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Fill: =RGBA(202, 202, 202, 1)
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey81.Y + DataCardKey81.Height + 5
+                ZIndex: =2
+
+            ErrorMessage78 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue75.Y + DataCardValue75.Height
+                ZIndex: =3
+
+            StarVisible78 As label:
+                Align: =Align.Center
+                Height: =DataCardKey81.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey81.Y
+                ZIndex: =4
+
+        "'Inventory Code_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="InventoryCode"
+            Default: =ThisItem.'3rd Vendor Name'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"InventoryCode")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "InventoryCode")
+            Required: =false
+            Update: =DataCardValue83.Text
+            Visible: =false
+            Width: =454
+            X: =0
+            Y: =6
+            ZIndex: =11
+
+            DataCardKey89 As label:
+                AutoHeight: =true
+                Color: =RGBA(0, 134, 208, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue83 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey89.Y + DataCardKey89.Height + 5
+                ZIndex: =2
+
+            ErrorMessage86 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue83.Y + DataCardValue83.Height
+                ZIndex: =3
+
+            StarVisible86 As label:
+                Align: =Align.Center
+                Height: =DataCardKey89.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey89.Y
+                ZIndex: =4
+
+        "'Inventory Category_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="InventoryCategory"
+            Default: =ThisItem.'Item Category'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"InventoryCategory")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "InventoryCategory")
+            Required: =false
+            Update: =DataCardValue81.Text
+            Visible: =false
+            Width: =454
+            X: =2
+            Y: =6
+            ZIndex: =11
+
+            DataCardKey87 As label:
+                AutoHeight: =true
+                Color: =RGBA(0, 134, 208, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue81 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey87.Y + DataCardKey87.Height + 5
+                ZIndex: =2
+
+            ErrorMessage84 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue81.Y + DataCardValue81.Height
+                ZIndex: =3
+
+            StarVisible84 As label:
+                Align: =Align.Center
+                Height: =DataCardKey87.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey87.Y
+                ZIndex: =4
+
+        "'Inventory Number_DataCard2' As typedDataCard.textualEditCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="InventoryNumber"
+            Default: =ThisItem.'Item Subcategory'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"InventoryNumber")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "InventoryNumber")
+            Required: =false
+            Update: =DataCardValue82.Text
+            Visible: =false
+            Width: =454
+            X: =0
+            Y: =7
+            ZIndex: =11
+
+            DataCardKey88 As label:
+                AutoHeight: =true
+                Color: =RGBA(0, 134, 208, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue82 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey88.Y + DataCardKey88.Height + 5
+                ZIndex: =2
+
+            ErrorMessage85 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue82.Y + DataCardValue82.Height
+                ZIndex: =3
+
+            StarVisible85 As label:
+                Align: =Align.Center
+                Height: =DataCardKey88.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey88.Y
+                ZIndex: =4
+
+        UoM_DataCard2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="UoM"
+            Default: =ThisItem.'3rd Vendor ID'
+            DisplayMode: =Parent.DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Ladol Test List'],DataSourceInfo.DisplayName,"UoM")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@'Ladol Test List'], DataSourceInfo.MaxLength, "UoM")
+            Required: =false
+            Update: =DataCardValue76.Text
+            Visible: =false
+            Width: =454
+            X: =2
+            Y: =7
+            ZIndex: =11
+
+            DataCardKey82 As label:
+                AutoHeight: =true
+                Color: =RGBA(0, 134, 208, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue76 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Fill: =RGBA(202, 202, 202, 1)
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey82.Y + DataCardKey82.Height + 5
+                ZIndex: =2
+
+            ErrorMessage79 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue76.Y + DataCardValue76.Height
+                ZIndex: =3
+
+            StarVisible79 As label:
+                Align: =Align.Center
+                Height: =DataCardKey82.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey82.Y
+                ZIndex: =4
+
+    Button2 As button:
+        DisplayMode: =If(Form4.Valid,DisplayMode.Edit,DisplayMode.Disabled)
+        Fill: =RGBA(0, 94, 146, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        OnSelect: |-
+            =UpdateContext({Approve:true});
+        Text: ="Approve"
+        Visible: |-
+            =//If(varRecordInspection.Approver = User().Email,
+            //    And(
+            //        IsBlank(CommentDataCardValue3.Text) = false,
+            //        IsBlank(DataCardValue74.Text) = false
+            //        ),
+            //        true,
+            //        false
+            //    )
+            //        
+            //varRecordInspection.Approver = User().Email
+            true
+        X: =1140
+        Y: =728
+        ZIndex: =5
+
+    "'View Items Button' As button":
+        DisplayMode: =
+        Fill: =RGBA(0, 94, 146, 1)
+        OnSelect: =Set(ApprovalItemList,true)
+        Text: ="View Selected GL/Item Details"
+        Width: =336
+        X: =531
+        Y: =727
+        ZIndex: =6
+
+    Button2_2 As button:
+        DisplayMode: =If(IsBlank(CommentDataCardValue3.Text), DisplayMode.Disabled, DisplayMode.Edit)
+        Fill: =RGBA(255, 0, 0, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        OnSelect: |
+            =UpdateContext({Reject:true});
+        Text: ="Reject"
+        Visible: |-
+            =//If(varRecordInspection.Approver = User().Email,
+            //    And(
+            //        IsBlank(CommentDataCardValue3.Text) = false,
+            //        IsBlank(DataCardValue74.Text) = false
+            //        ),
+            //        true,
+            //        false
+            //    )
+                    
+            //varRecordInspection.Approver = User().Email
+            true
+        X: =192
+        Y: =728
+        ZIndex: =7
+
+    Image5_1 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1290
+        Y: =1
+        ZIndex: =8
+
+    Label2_1 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Text: =User().FullName
+        Tooltip: =Label2_1.Text
+        Wrap: =false
+        X: =1126
+        Y: =31
+        ZIndex: =9
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        Width: =1366
+        Y: =113
+        ZIndex: =10
+
+    Arrow3 As arrow.backArrow:
+        Fill: =RGBA(0, 94, 146, 1)
+        Height: =40
+        OnSelect: |-
+            =Navigate(LineManagerScreen);
+            Clear(ManagerItemUpdateCollection)
+        Tooltip: ="Back"
+        Width: =40
+        X: =19
+        Y: =116
+        ZIndex: =11
+
+    Icon10 As icon.Edit:
+        Height: =40
+        Icon: =Icon.Edit
+        OnSelect: =EditForm(Form4)
+        Tooltip: ="Edit"
+        Width: =40
+        X: =1302
+        Y: =116
+        ZIndex: =12
+
+    Button4 As button:
+        DisplayMode: =//If(IsBlank(CommentDataCardValue3.Text),DisplayMode.Disabled,DisplayMode.Edit || IsBlank(PODataCardValue.Text),DisplayMode.Edit, DisplayMode.Disabled)
+        OnSelect: |-
+            =Set(varRecordInspection, Patch('Ladol Test List', varRecordInspection, {ApprovalStatus: "Draft", 'Approval Comment':CommentDataCardValue3.Text}));
+            SubmitForm(Form4);
+            Navigate(LineMangSuccessScreen);
+        Text: ="Submit"
+        Visible: =false
+        X: =603
+        Y: =728
+        ZIndex: =13
+
+    RecordID As label:
+        Text: =varRecordInspection.ID
+        Visible: =false
+        X: =381
+        Y: =32
+        ZIndex: =14
+
+    Icon47 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =53
+        Icon: =Icon.Home
+        OnSelect: |-
+            =Navigate('Home Screen');
+            Clear(ManagerItemUpdateCollection)
+        Width: =52
+        X: =327
+        Y: =9
+        ZIndex: =15
+
+    "'Item Manager Container' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Light
+        Height: =768
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =ApprovalItemList
+        Width: =1366
+        ZIndex: =16
+
+        Image13 As image:
+            Height: =658
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            Y: =110
+            ZIndex: =1
+
+        Rectangle22 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =658
+            Width: =1366
+            Y: =110
+            ZIndex: =2
+
+        Gallery10 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =566
+            Items: =Filter('Purchase Requisition Line Item','Line ItemID' = Value(RecordID.Text))
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =34
+            Visible: =If(Type_of_service.Selected.Value="G/L Account",false,true)
+            Width: =1360
+            Y: =202
+            ZIndex: =11
+
+            TextInput8_1 As text:
+                Default: =ThisItem.'Item Name'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Name'
+                X: =38
+                ZIndex: =1
+
+            TextInput9_3 As text:
+                Default: =ThisItem.'Item No'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =229
+                X: =359
+                ZIndex: =2
+
+            TextInput9_4 As text:
+                Default: =ThisItem.'Inventory Category'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =157
+                X: =588
+                ZIndex: =3
+
+            TextInput9_5 As text:
+                Default: =ThisItem.'Unite of Measurement'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =103
+                X: =745
+                ZIndex: =4
+
+            Item_Spec_Text_1 As text:
+                Default: =ThisItem.'Item Specification'
+                Height: =34
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Specification'
+                Width: =340
+                X: =848
+                ZIndex: =5
+
+            Quantity_Text_1 As text:
+                Default: =ThisItem.Qauntity
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =73
+                X: =1190
+                ZIndex: =6
+
+            Icon40 As icon.Save:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Icon: =Icon.Save
+                OnSelect: |-
+                    =If(
+                        ThisItem.ID in ManagerItemUpdateCollection.ID,
+                        Update(
+                            ManagerItemUpdateCollection,
+                            LookUp(
+                                ManagerItemUpdateCollection,
+                                ID = ThisItem.ID
+                            ),{Qauntity:Quantity_Text_1.Text,
+                    ItemSpecification:Item_Spec_Text_1.Text,
+                    ID: ThisItem.ID}),
+                    Collect(ManagerItemUpdateCollection,
+                    {Qauntity:Quantity_Text_1.Text,
+                    ItemSpecification:Item_Spec_Text_1.Text,
+                    ID: ThisItem.ID}))
+                Width: =50
+                X: =1273
+                ZIndex: =7
+
+            Icon41 As icon.Check:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Icon: =Icon.Check
+                OnSelect: =
+                Visible: =If(ThisItem.ID in ManagerItemUpdateCollection.ID,true,false)
+                Width: =30
+                ZIndex: =8
+
+        Rectangle19 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =40
+            Width: =1366
+            Y: =112
+            ZIndex: =12
+
+        Label12_1 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Size: =15
+            Text: ="Selected Item Details"
+            Width: =848
+            X: =220
+            Y: =120
+            ZIndex: =13
+
+        Group11 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =15
+
+            Rectangle3_1 As rectangle:
+                Fill: =RGBA(0, 94, 146, 1)
+                Height: =44
+                Width: =1320
+                X: =21
+                Y: =158
+                ZIndex: =4
+
+            Label24_8 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Item Name"
+                X: =94
+                Y: =166
+                ZIndex: =5
+
+            Label24_9 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Item No"
+                Width: =104
+                X: =410
+                Y: =166
+                ZIndex: =6
+
+            Label24_10 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Inv. Category"
+                Width: =130
+                X: =593
+                Y: =166
+                ZIndex: =7
+
+            Label24_11 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Base UoM"
+                Width: =120
+                X: =741
+                Y: =166
+                ZIndex: =8
+
+            Label24_12 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Item Specification"
+                Width: =180
+                X: =922
+                Y: =166
+                ZIndex: =9
+
+            Label24_13 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Quantity"
+                Width: =113
+                X: =1169
+                Y: =166
+                ZIndex: =10
+
+            Label24_32 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ="Update"
+                Width: =88
+                X: =1261
+                Y: =165
+                ZIndex: =15
+
+        Icon2 As icon.CancelBadge:
+            Height: =40
+            Icon: =Icon.CancelBadge
+            OnSelect: =Set(ApprovalItemList,false)
+            Width: =35
+            X: =1310
+            Y: =115
+            ZIndex: =16
+
+        Toggle2 As toggleSwitch:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(0, 94, 146, 1)
+            FalseFill: =RGBA(0, 94, 146, 1)
+            FalseText: ="Item"
+            FontWeight: =FontWeight.Bold
+            OnCheck: =Set(ApprovalGLList,true)
+            OnUncheck: =Set(ApprovalItemList,true)
+            Tooltip: ="Toggle to GL"
+            TrueText: ="GL"
+            Width: =110
+            X: =40
+            Y: =118
+            ZIndex: =17
+
+    "'Approve Popup' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =20
+
+        Rectangle34 As rectangle:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =737
+            Visible: =Approve
+            Width: =1366
+            Y: =115
+            ZIndex: =17
+
+        Rectangle35 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =190
+            Visible: =Approve
+            Width: =406
+            X: =491
+            Y: =262
+            ZIndex: =18
+
+        Label16 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =78
+            Size: =15
+            Text: ="Are you sure you want to Approve?"
+            Visible: =Approve
+            Width: =406
+            X: =491
+            Y: =262
+            ZIndex: =19
+
+        Button1 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |-
+                =UpdateContext({Approve:false});
+            Text: ="No"
+            Visible: =Approve
+            Width: =120
+            X: =531
+            Y: =382
+            ZIndex: =20
+
+        Button1_1 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |+
+                =Set(varRecordInspection, Patch('Ladol Test List', varRecordInspection, {ApprovalStatus: "Pending", 'Approval Comment':CommentDataCardValue3.Text}));
+                Office365Outlook.SendEmailV2(varRecordInspection.'Created By'.Email, "Your Requisition of " & varRecordInspection.Items & " has been approved", "Congratulations!!! <br> <br> Your request for the Item(s):" & varRecordInspection.Items & " has been approved  by your line manager. While waitng for the next approver Please see your line manager's Comment : <br> <br> " & CommentDataCardValue3.Text);
+                Patch('Purchase Requisition Line Item',ManagerItemUpdateCollection);
+                Patch('Purchase Requisition Line Item',ManagerGLUpdateCollection);
+                Clear(ManagerGLUpdateCollection);
+                Clear(ManagerItemUpdateCollection);
+                ResetForm(Form4);
+                Navigate(LineMangSuccessScreen);
+                UpdateContext({Approve:false});
+                
+            Text: ="Yes"
+            Visible: =Approve
+            Width: =120
+            X: =753
+            Y: =382
+            ZIndex: =21
+
+    "'Reject Popup' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =25
+
+        Rectangle34_1 As rectangle:
+            Fill: =RGBA(0, 0, 0, 1)
+            Height: =660
+            Visible: =Reject
+            Width: =1366
+            Y: =115
+            ZIndex: =22
+
+        Rectangle35_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =190
+            Visible: =Reject
+            Width: =406
+            X: =491
+            Y: =262
+            ZIndex: =23
+
+        Label16_9 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =78
+            Size: =15
+            Text: ="Are you sure you want to Reject?"
+            Visible: =Reject
+            Width: =406
+            X: =491
+            Y: =262
+            ZIndex: =24
+
+        Button1_4 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |-
+                =UpdateContext({Reject:false});
+            Text: ="No"
+            Visible: =Reject
+            Width: =120
+            X: =531
+            Y: =382
+            ZIndex: =25
+
+        Button1_3 As button:
+            Fill: =RGBA(0, 94, 146, 1)
+            OnSelect: |-
+                =Set(varRecordInspection, Patch('Ladol Test List', varRecordInspection, {ApprovalStatus: "Rejected", 'Approval Comment':CommentDataCardValue3.Text}));
+                Office365Outlook.SendEmailV2(varRecordInspection.'Created By'.Email, "Your Requisition of " & varRecordInspection.Items & " was rejected", " Your request for the Item(s):" & varRecordInspection.Items & " was rejected. Please see Approval Comment : <br> <br> " & CommentDataCardValue3.Text);
+                Navigate(LineMangSuccessScreen);
+                Patch('Purchase Requisition Line Item',ManagerItemUpdateCollection);
+                Patch('Purchase Requisition Line Item',ManagerGLUpdateCollection);
+                Clear(ManagerGLUpdateCollection);
+                Clear(ManagerItemUpdateCollection);
+                ResetForm(Form4);
+                Navigate(LineMangSuccessScreen);
+                UpdateContext({Reject:false});
+            Text: ="Yes"
+            Visible: =Reject
+            Width: =120
+            X: =753
+            Y: =382
+            ZIndex: =26
+
+    Label28 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =32
+        Text: =ManagerRequest_ID.Text
+        Width: =171
+        X: =608
+        ZIndex: =27
+
+    "'GL ManagerContainer' As groupContainer.manualLayoutContainer":
+        DropShadow: =DropShadow.Light
+        Height: =768
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =ApprovalGLList
+        Width: =1366
+        ZIndex: =28
+
+        Image13_1 As image:
+            Height: =658
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            Y: =110
+            ZIndex: =1
+
+        Rectangle22_2 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.8)
+            Height: =658
+            Width: =1366
+            Y: =110
+            ZIndex: =2
+
+        Gallery10_2 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =566
+            Items: =Filter('Purchase Requisition Line Item','Line ItemID' = Value(RecordID.Text))
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =34
+            Visible: =If(Type_of_service.Selected.Value="G/L Account",true,false)
+            Width: =1317
+            X: =21
+            Y: =202
+            ZIndex: =11
+
+            TextInput8_4 As text:
+                Default: =ThisItem.'GL Account Name'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Name'
+                Width: =400
+                X: =6
+                ZIndex: =1
+
+            TextInput9_15 As text:
+                Default: =ThisItem.'GL Account Number'
+                DisplayMode: =DisplayMode.View
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =150
+                X: =408
+                ZIndex: =2
+
+            DescriptionText As text:
+                Default: =ThisItem.'GL Account Description'
+                Height: =34
+                OnSelect: =Select(Parent)
+                Tooltip: =ThisItem.'Item Specification'
+                Width: =550
+                X: =706
+                ZIndex: =5
+
+            Quantity_Text_4 As text:
+                Default: =ThisItem.Qauntity
+                Height: =34
+                OnSelect: =Select(Parent)
+                Visible: =false
+                Width: =73
+                X: =1158
+                ZIndex: =6
+
+            Icon40_1 As icon.Save:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Icon: =Icon.Save
+                OnSelect: |-
+                    =If(
+                        ThisItem.ID in ManagerGLUpdateCollection.ID,
+                        Update(
+                            ManagerGLUpdateCollection,
+                            LookUp(
+                                ManagerGLUpdateCollection,
+                                ID = ThisItem.ID
+                            ),{GLAccountDescription:DescriptionText.Text,
+                            ServiceAmount:QuantityText.Text,
+                            Qauntity:QuantityText.Text,
+                    ID: ThisItem.ID}),
+                    Collect(ManagerGLUpdateCollection,
+                    {GLAccountDescription:DescriptionText.Text,
+                    ServiceAmount:QuantityText.Text,
+                    Qauntity:QuantityText.Text,
+                    ID: ThisItem.ID}))
+                Width: =50
+                X: =1257
+                ZIndex: =7
+
+            Icon41_1 As icon.Check:
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =34
+                Icon: =Icon.Check
+                OnSelect: =
+                Visible: =If(ThisItem.ID in ManagerItemUpdateCollection.ID,true,false)
+                Width: =30
+                ZIndex: =8
+
+            QuantityText As text:
+                Default: =ThisItem.'Service Amount'
+                Height: =34
+                OnSelect: =Select(Parent)
+                Width: =145
+                X: =559
+                ZIndex: =9
+
+        Rectangle19_1 As rectangle:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =40
+            Width: =1366
+            Y: =112
+            ZIndex: =12
+
+        Label12_3 As label:
+            Align: =Align.Center
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            Size: =15
+            Text: ="Selected GL Details"
+            Width: =848
+            X: =220
+            Y: =120
+            ZIndex: =13
+
+        Group11_2 As group:
+            Height: =5
+            Width: =5
+            X: =40
+            Y: =40
+            ZIndex: =15
+
+            Rectangle3_7 As rectangle:
+                Fill: =RGBA(0, 94, 146, 1)
+                Height: =44
+                Width: =1320
+                X: =21
+                Y: =158
+                ZIndex: =4
+
+            Label24_39 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="GL Account"
+                X: =94
+                Y: =166
+                ZIndex: =5
+
+            Label24_40 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="GL Account No"
+                X: =434
+                Y: =166
+                ZIndex: =6
+
+            Label24_43 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =29
+                Text: ="Description"
+                Width: =180
+                X: =922
+                Y: =166
+                ZIndex: =9
+
+            Label24_38 As label:
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =30
+                Text: ="Update"
+                Width: =88
+                X: =1251
+                Y: =165
+                ZIndex: =15
+
+        Icon2_1 As icon.CancelBadge:
+            Height: =35
+            Icon: =Icon.CancelBadge
+            OnSelect: |-
+                =Set(ApprovalGLList,false);
+                Reset(Toggle2)
+            Width: =35
+            X: =1310
+            Y: =115
+            ZIndex: =16
+
+        Label24_97 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            Text: ="Quantity"
+            X: =598
+            Y: =166
+            ZIndex: =17
+

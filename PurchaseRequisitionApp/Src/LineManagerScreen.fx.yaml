@@ -1,0 +1,426 @@
+LineManagerScreen As screen:
+    BackgroundImage: ='Ladol Background'
+    ImagePosition: =ImagePosition.Fill
+    OnVisible: |-
+        =ClearCollect(ManagerGallery,SortByColumns(Filter('Ladol Test List',Approver = User().Email And ApprovalStatus = "Submitted"),"Created", SortOrder.Descending));
+        
+        ClearCollect(ManagerGalleryHistory,SortByColumns(Filter('Ladol Test List',Approver = User().Email And ApprovalStatus = "Rejected" || ApprovalStatus = "Approved by MD" || ApprovalStatus = "Pending" || ApprovalStatus = "Approved" || ApprovalStatus = "Pending..."),"DepartmentType",SortOrder.Descending, "Created", SortOrder.Descending))
+
+    Image12 As image:
+        Height: =768
+        Image: ='Ladol Background'
+        ImagePosition: =ImagePosition.Fill
+        Width: =1366
+        ZIndex: =1
+
+    Rectangle6_1 As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0.7)
+        Height: =768
+        Width: =1366
+        ZIndex: =2
+
+    RegForm_13 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        Size: =20
+        Text: ="Manager's Approval Page"
+        Width: =1366
+        ZIndex: =3
+
+    LadoImage_6 As image:
+        Height: =104
+        Image: =ladol
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: =Navigate('Home Screen')
+        Width: =309
+        ZIndex: =4
+
+    Label2_6 As label:
+        Align: =Align.Right
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =27
+        Text: =User().FullName
+        Tooltip: =Label2_6.Text
+        Wrap: =false
+        X: =1128
+        Y: =24
+        ZIndex: =5
+
+    "Gallery7 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 0.1)
+        Height: =607
+        Items: |-
+            =ManagerGallery
+            //'Ladol Test List'
+            //SortByColumns(Filter('Ladol Test List',Approver = User().Email And ApprovalStatus = "Submitted"),"Created", SortOrder.Descending)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =Set(varRecordInspection, ThisItem);
+            ViewForm(Form4);
+            Navigate(Approval)
+        TemplateFill: =RGBA(255, 255, 255, 1)
+        TemplatePadding: =0
+        TemplateSize: =85
+        Width: =1366
+        Y: =161
+        ZIndex: =6
+
+        Image8 As image:
+            Height: =79
+            Image: ='Hand images'
+            OnSelect: =Select(Parent)
+            Width: =128
+            X: =16
+            ZIndex: =1
+
+        Separator3 As rectangle:
+            BorderColor: =RGBA(56, 96, 178, 1)
+            BorderThickness: =3
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+        Label11 As label:
+            Color: =RGBA(39, 113, 194, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Title
+            Width: =175
+            X: =486
+            Y: =15
+            ZIndex: =6
+
+        Label11_1 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'Staff Name'
+            Tooltip: =Label11_1.Text
+            Width: =230
+            Wrap: =false
+            X: =161
+            Y: =42
+            ZIndex: =7
+
+        Label11_2 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =39
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'Department Type'
+            Tooltip: =Label11_2.Text
+            Width: =221
+            Wrap: =false
+            X: =486
+            Y: =30
+            ZIndex: =8
+
+        Label11_3 As label:
+            Color: =RGBA(0, 94, 146, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: =Text(ThisItem.Date,"dd/mm/yyy")
+            Width: =230
+            X: =161
+            Y: =15
+            ZIndex: =9
+
+        Icon8 As icon.View:
+            Icon: =Icon.View
+            OnSelect: |-
+                =Set(varRecordInspection, ThisItem);
+                ViewForm(Form4);
+                Navigate(Approval)
+            X: =1230
+            Y: =15
+            ZIndex: =10
+
+        Label11_9 As label:
+            Color: =RGBA(39, 113, 194, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =25
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'Request ID'
+            Tooltip: =Label11_9.Text
+            Width: =230
+            Wrap: =false
+            X: =915
+            Y: =31
+            ZIndex: =11
+
+    Container6 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =767
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =History
+        Width: =1366
+        Y: =1
+        ZIndex: =7
+
+        Image11 As image:
+            Height: =603
+            Image: ='Ladol Background'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+            Y: =164
+            ZIndex: =1
+
+        Rectangle41 As rectangle:
+            Fill: =RGBA(255, 255, 255, 0.7)
+            Height: =603
+            Width: =1366
+            Y: =164
+            ZIndex: =2
+
+        Rectangle42 As rectangle:
+            Fill: =RGBA(0, 0, 0, 0.7)
+            Height: =603
+            OnSelect: |-
+                =UpdateContext({SearchControl:false})
+            Width: =1366
+            Y: =164
+            ZIndex: =3
+
+        "Gallery7_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+            DelayItemLoading: =true
+            Fill: =RGBA(255, 255, 255, 0)
+            Height: =603
+            Items: |-
+                =Search(ManagerGalleryHistory,SearchTextInput.Text,"ApprovalStatus0","RequestID")
+                //'Ladol Test List'
+                /*SortByColumns(Filter('Ladol Test List',Approver = User().Email And ApprovalStatus = "Rejected" || ApprovalStatus = "Approved by MD" || ApprovalStatus = "Pending" || ApprovalStatus = "Approved" || ApprovalStatus = "Pending..."),"DepartmentType",SortOrder.Ascending, "Created", SortOrder.Ascending)*/
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =UpdateContext({SearchControl:false});
+                Reset(SearchTextInput)
+                
+                /*Set(varRecordInspection, ThisItem);
+                ViewForm(Form4);
+                Navigate(Approval)*/
+            TemplateFill: =RGBA(255, 255, 255, 1)
+            TemplatePadding: =0
+            TemplateSize: =89
+            Width: =1366
+            Y: =164
+            ZIndex: =4
+
+            Image8_1 As image:
+                Height: =76
+                Image: ='Hand images'
+                OnSelect: =Select(Parent)
+                Width: =128
+                X: =16
+                ZIndex: =1
+
+            Separator3_1 As rectangle:
+                BorderColor: =RGBA(56, 96, 178, 1)
+                BorderThickness: =3
+                Height: =1
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - 1
+                ZIndex: =5
+
+            Label11_5 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =31
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.ApprovalStatus
+                Width: =175
+                X: =486
+                Y: =15
+                ZIndex: =6
+
+            Label11_6 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.'Staff Name'
+                Tooltip: =Label11_6.Text
+                Width: =230
+                Wrap: =false
+                X: =161
+                Y: =51
+                ZIndex: =7
+
+            Label11_7 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =28
+                OnSelect: =Select(Parent)
+                Text: =Text(ThisItem.Created,"dd/mm/yyy")
+                Width: =221
+                X: =486
+                Y: =51
+                ZIndex: =8
+
+            Label11_4 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Date
+                Width: =230
+                X: =161
+                Y: =15
+                ZIndex: =9
+
+            Icon8_1 As icon.View:
+                Color: =RGBA(0, 94, 146, 1)
+                Icon: =Icon.View
+                OnSelect: |-
+                    =Set(varRecordInspectionHistory, ThisItem);
+                    ViewForm(Form4_1);
+                    Navigate(ApprovalHistory)
+                X: =1230
+                Y: =15
+                ZIndex: =10
+
+            Label11_8 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =31
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.'Department Type'
+                Tooltip: =Label11_8.Text
+                Width: =300
+                Wrap: =false
+                X: =808
+                Y: =20
+                ZIndex: =11
+
+            Label11_10 As label:
+                Color: =RGBA(0, 94, 146, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =25
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.'Request ID'
+                Tooltip: =Label11_10.Text
+                Width: =230
+                Wrap: =false
+                X: =808
+                Y: =64
+                ZIndex: =12
+
+        SearchTextInput As text:
+            Color: =RGBA(0, 94, 146, 1)
+            Default: =""
+            Height: =36
+            HintText: ="Search"
+            Visible: =SearchControl
+            Width: =244
+            X: =1027
+            Y: =66
+            ZIndex: =6
+
+        Icon39 As icon.Search:
+            Color: =RGBA(0, 94, 146, 1)
+            Height: =36
+            Icon: =Icon.Search
+            OnSelect: |
+                =UpdateContext({SearchControl:true})
+            Width: =94
+            X: =1272
+            Y: =66
+            ZIndex: =7
+
+    Rectangle47 As rectangle:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =48
+        Width: =1366
+        Y: =113
+        ZIndex: =8
+
+    Rectangle48 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =50
+        OnSelect: |-
+            =UpdateContext({SearchControl:false});
+            Reset(SearchTextInput)
+        Width: =1366
+        Y: =108
+        ZIndex: =9
+
+    Toggle1 As toggleSwitch:
+        BorderColor: =RGBA(116, 116, 116, 1)
+        Color: =RGBA(0, 94, 146, 1)
+        FalseFill: =RGBA(0, 16, 96, 1)
+        FalseText: ="Current"
+        FontWeight: =FontWeight.Bold
+        Height: =32
+        OnCheck: |-
+            =UpdateContext({History:true})
+        OnUncheck: |-
+            =UpdateContext({History:false})
+        TrueText: ="History"
+        Width: =158
+        X: =1128
+        Y: =114
+        ZIndex: =10
+
+    Icon45 As icon.Home:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =52
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        Width: =58
+        X: =344
+        Y: =14
+        ZIndex: =11
+
+    Image5_6 As image:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1300
+        Y: =5
+        ZIndex: =12
+
+    Icon46 As icon.Reload:
+        Color: =RGBA(0, 94, 146, 1)
+        Height: =30
+        Icon: =Icon.Reload
+        OnSelect: |-
+            =Refresh('Ladol Test List');
+            Refresh('Purchase Requisition Line Item');
+            Clear(ManagerGallery);
+            ClearCollect(ManagerGallery,SortByColumns(Filter('Ladol Test List',Approver = User().Email And ApprovalStatus = "Submitted"),"Created", SortOrder.Descending));
+        Width: =58
+        X: =16
+        Y: =116
+        ZIndex: =13
+
+    Label3 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Text: ="Reload"
+        X: =62
+        Y: =116
+        ZIndex: =14
+

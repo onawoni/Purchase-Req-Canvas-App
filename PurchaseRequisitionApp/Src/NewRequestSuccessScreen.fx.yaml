@@ -1,0 +1,61 @@
+"NewRequestSuccessScreen As screen.'tabletLayout_Success_ver3.0'":
+    BackgroundImage: ='purchase-order-and-purchase-requisition'
+    ImagePosition: =ImagePosition.Fill
+
+    Rectangle18_3 As rectangle:
+        Fill: =RGBA(2, 57, 87, 1)
+        Height: =768
+        Width: =683
+        ZIndex: =10
+
+    Rectangle18_4 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =768
+        Width: =683
+        X: =683
+        ZIndex: =11
+
+    Image21_2 As image:
+        Height: =200
+        Image: =PO
+        Width: =194
+        X: =950
+        Y: =193
+        ZIndex: =12
+
+    Label21_4 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Purchase Requisition"
+        Width: =683
+        X: =680
+        Y: =447
+        ZIndex: =13
+
+    Image21_3 As image:
+        Height: =110
+        Image: =ladol
+        Width: =343
+        X: =683
+        ZIndex: =14
+
+    Label21_5 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Request Submitted"
+        Width: =683
+        Y: =333
+        ZIndex: =15
+
+    Icon1 As icon.Home:
+        Color: =RGBA(255, 255, 255, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        X: =616
+        ZIndex: =16
+

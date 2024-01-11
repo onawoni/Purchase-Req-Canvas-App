@@ -1,0 +1,216 @@
+{
+  "15e5be15-33c1-493a-9eb1-c7a22e369a4b": {
+    "appActions": [
+      "ManagerV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "15e5be15-33c1-493a-9eb1-c7a22e369a4b"
+  },
+  "4c49782f-16ba-4b3c-aee8-bba11f88e9dc": {
+    "appActions": [
+      "ListGroupMembers"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Groups",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365groups/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365groups",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Groups"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "4c49782f-16ba-4b3c-aee8-bba11f88e9dc"
+  },
+  "51934895-0a6a-4c86-84ae-341dddd7f9b0": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write",
+      "providers/PowerPlatform.Governance/Operations/Delete"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1670/1.0.1670.3526/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ladolenterprise-my.sharepoint.com/personal/bcadmin_ladol_com": {
+        "dataSources": {
+          "Ladol Test List": {
+            "tableName": "9652ac0a-a0a0-429c-8464-2880d85b3458"
+          },
+          "Managers List": {
+            "tableName": "ea1dfaea-9d4f-45cd-be5d-941004d4e111"
+          },
+          "PR First Vendor": {
+            "tableName": "321a6b4d-66a6-4984-844c-ab7c7be3c5bf"
+          },
+          "PR Second Vendor": {
+            "tableName": "9f008999-16a5-4bc5-8295-f2215106558d"
+          },
+          "PR Third Vendor": {
+            "tableName": "c535044a-1f38-4c26-99be-467cb740828c"
+          },
+          "Purchase Requisition Line Item": {
+            "tableName": "fd04514b-8967-4db4-ba0b-c232186b268b"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Ladol Test List",
+      "Managers List",
+      "PR First Vendor",
+      "PR Second Vendor",
+      "PR Third Vendor",
+      "Purchase Requisition Line Item"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "51934895-0a6a-4c86-84ae-341dddd7f9b0"
+  },
+  "a47eb303-a1ec-443d-b82a-e68975a9f301": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read"
+    ],
+    "connectionRef": {
+      "apiTier": "Premium",
+      "displayName": "Dynamics 365 Business Central",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1673/1.0.1673.3557/dynamicssmbsaas/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "PRODUCTION-202303161607,071455fb-83f2-ed11-8848-002248f94e13": {
+        "dataSources": {
+          "accounts (v2.0)": {
+            "tableName": "accounts,v2.0"
+          },
+          "applyVendorEntries (v2.0)": {
+            "tableName": "applyVendorEntries,v2.0"
+          },
+          "defaultDimensions (v2.0)": {
+            "tableName": "defaultDimensions,v2.0"
+          },
+          "dimensions (v2.0)": {
+            "tableName": "dimensions,v2.0"
+          },
+          "dimensionSetEntries (microsoft/reportsFinance/beta)": {
+            "tableName": "dimensionSetEntries,microsoft%252FreportsFinance%252Fbeta"
+          },
+          "dimensionSetLines (v2.0)": {
+            "tableName": "dimensionSetLines,v2.0"
+          },
+          "dimensionValues (v2.0)": {
+            "tableName": "dimensionValues,v2.0"
+          },
+          "generalLedgerAccounts (microsoft/reportsFinance/beta)": {
+            "tableName": "generalLedgerAccounts,microsoft%252FreportsFinance%252Fbeta"
+          },
+          "generalLedgerBudgetEntries (microsoft/reportsFinance/beta)": {
+            "tableName": "generalLedgerBudgetEntries,microsoft%252FreportsFinance%252Fbeta"
+          },
+          "generalLedgerBudgets (microsoft/reportsFinance/beta)": {
+            "tableName": "generalLedgerBudgets,microsoft%252FreportsFinance%252Fbeta"
+          },
+          "items (v2.0)": {
+            "tableName": "items,v2.0"
+          },
+          "paymentTerms (v2.0)": {
+            "tableName": "paymentTerms,v2.0"
+          },
+          "purchaseOrderLines (v2.0)": {
+            "tableName": "purchaseOrderLines,v2.0"
+          },
+          "purchaseOrders (v2.0)": {
+            "tableName": "purchaseOrders,v2.0"
+          },
+          "vendorLedgerEntries (microsoft/reportsFinance/beta)": {
+            "tableName": "vendorLedgerEntries,microsoft%252FreportsFinance%252Fbeta"
+          },
+          "vendorPaymentJournals (v2.0)": {
+            "tableName": "vendorPaymentJournals,v2.0"
+          },
+          "vendorPayments (v2.0)": {
+            "tableName": "vendorPayments,v2.0"
+          },
+          "vendorPurchases (v2.0)": {
+            "tableName": "vendorPurchases,v2.0"
+          },
+          "vendors (v2.0)": {
+            "tableName": "vendors,v2.0"
+          },
+          "vendors (v2.0)_1": {
+            "tableName": "vendors,v2.0"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "dimensions (v2.0)",
+      "dimensionValues (v2.0)",
+      "generalLedgerBudgets (microsoft/reportsFinance/beta)",
+      "dimensionSetEntries (microsoft/reportsFinance/beta)",
+      "dimensionSetLines (v2.0)",
+      "items (v2.0)",
+      "generalLedgerBudgetEntries (microsoft/reportsFinance/beta)",
+      "paymentTerms (v2.0)",
+      "vendorPaymentJournals (v2.0)",
+      "defaultDimensions (v2.0)",
+      "vendors (v2.0)",
+      "vendorPurchases (v2.0)",
+      "vendorPayments (v2.0)",
+      "vendorLedgerEntries (microsoft/reportsFinance/beta)",
+      "applyVendorEntries (v2.0)",
+      "purchaseOrders (v2.0)",
+      "purchaseOrderLines (v2.0)",
+      "generalLedgerAccounts (microsoft/reportsFinance/beta)",
+      "accounts (v2.0)",
+      "vendors (v2.0)_1"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "a47eb303-a1ec-443d-b82a-e68975a9f301"
+  },
+  "fdcfe5c3-00d9-432d-847b-83ff0a13a55d": {
+    "appActions": [
+      "SendEmailV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1669/1.0.1669.3522/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "fdcfe5c3-00d9-432d-847b-83ff0a13a55d"
+  }
+}

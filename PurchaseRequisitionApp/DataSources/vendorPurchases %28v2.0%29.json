@@ -1,0 +1,23 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-12T17:37:18.4720000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "dateFilter_FilterOnly": "System Id (dateFilter_FilterOnly)",
+      "name": "Name",
+      "totalPurchaseAmount": "Total Purchase Amount",
+      "vendorId": "System Id (vendorId)",
+      "vendorNumber": "No."
+    },
+    "DatasetName": "PRODUCTION-202303161607,071455fb-83f2-ed11-8848-002248f94e13",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": false,
+    "Name": "vendorPurchases (v2.0)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

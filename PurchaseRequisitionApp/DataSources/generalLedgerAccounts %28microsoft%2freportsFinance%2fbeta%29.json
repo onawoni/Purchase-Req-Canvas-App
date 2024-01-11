@@ -1,0 +1,32 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-12T17:37:18.4720000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "accountCategory": "accountCategory",
+      "accountName": "accountName",
+      "accountNumber": "accountNumber",
+      "accountSubcategoryDescription": "accountSubcategoryDescription",
+      "accountSubcategoryEntryNumber": "accountSubcategoryEntryNumber",
+      "accountType": "accountType",
+      "budgetFilter": "budgetFilter",
+      "businessUnitFilter": "businessUnitFilter",
+      "id": "id",
+      "incomeBalance": "incomeBalance",
+      "indentation": "indentation",
+      "lastModifiedDateTime": "lastModifiedDateTime",
+      "netChange": "netChange",
+      "parentAccountNumber": "parentAccountNumber"
+    },
+    "DatasetName": "PRODUCTION-202303161607,071455fb-83f2-ed11-8848-002248f94e13",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": false,
+    "Name": "generalLedgerAccounts (microsoft/reportsFinance/beta)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

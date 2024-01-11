@@ -1,0 +1,202 @@
+"'Home Screen' As screen":
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Fill
+    OnVisible: =Set(popup, false);
+
+    Rectangle18 As rectangle:
+        Fill: =RGBA(2, 57, 87, 1)
+        Height: =768
+        Width: =683
+        ZIndex: =1
+
+    Rectangle18_2 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =768
+        Width: =683
+        X: =683
+        ZIndex: =3
+
+    Image21 As image:
+        Height: =200
+        Image: =PO
+        Width: =194
+        X: =950
+        Y: =193
+        ZIndex: =4
+
+    Button6 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate('Request Screen');ResetForm(RequestForm)
+        Text: ="New Request"
+        Width: =510
+        X: =110
+        Y: =96
+        ZIndex: =5
+
+    Button6_1 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate('All Request')
+        Text: ="All Request"
+        Width: =510
+        X: =110
+        Y: =176
+        ZIndex: =6
+
+    Button6_2 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: |-
+            =If(
+                User().Email in Office365Groups.ListGroupMembers("22b4e05d-5edd-4fa8-9ff4-eaa3f07f2eff").value.mail,
+                DisplayMode.Edit,
+                DisplayMode.Disabled
+            )
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate(LineManagerScreen,ScreenTransition.Cover)
+        Text: ="Line Manager Approval"
+        Width: =510
+        X: =110
+        Y: =265
+        ZIndex: =7
+
+    Button6_3 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =If(User().Email in Office365Groups.ListGroupMembers("7e63b3fb-2d8c-4618-b91e-68f42520c19b").value.mail,DisplayMode.Edit,DisplayMode.Disabled)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate('PA Approval')
+        Text: ="Procurment Admin Approval"
+        Width: =510
+        X: =110
+        Y: =355
+        ZIndex: =8
+
+    Button6_8 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =If(User().Email in Office365Groups.ListGroupMembers("7ddafd51-d715-4497-9ed3-dbe232e351b6").value.mail,DisplayMode.Edit,DisplayMode.Disabled)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate('Proq Manager')
+        Text: ="Procurment Manager Approval"
+        Width: =510
+        X: =110
+        Y: =443
+        ZIndex: =9
+
+    Label21 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =20
+        Text: ="Welcome To LADOL"
+        Width: =276
+        X: =852
+        Y: =592
+        ZIndex: =10
+
+    Label21_1 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =42
+        Size: =15
+        Text: =User().FullName
+        Width: =269
+        Wrap: =false
+        X: =1097
+        Y: =640
+        ZIndex: =11
+
+    Label21_2 As label:
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =45
+        Size: =15
+        Text: =Today()
+        Width: =218
+        X: =1128
+        Y: =711
+        ZIndex: =12
+
+    Button6_9 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =If(User().Email in Office365Groups.ListGroupMembers("0344ace1-9134-48dd-a998-a63f0842ffbd").value.mail,DisplayMode.Edit,DisplayMode.Disabled)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: =Navigate('MD Screen')
+        Text: ="Managing Director Approval"
+        Width: =510
+        X: =110
+        Y: =531
+        ZIndex: =13
+
+    Label21_3 As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 94, 146, 1)
+        FontWeight: =FontWeight.Bold
+        Size: =20
+        Text: ="Purchase Requisition"
+        Width: =683
+        X: =680
+        Y: =447
+        ZIndex: =14
+
+    Image21_1 As image:
+        Height: =110
+        Image: =ladol
+        Width: =343
+        X: =683
+        ZIndex: =15
+
+    Image5_10 As image:
+        Height: =66
+        Image: =User().Image
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Width: =66
+        X: =1280
+        Y: =1
+        ZIndex: =16
+
+    Button6_11 As button:
+        Color: =RGBA(0, 94, 146, 1)
+        DisplayMode: =If(User().Email in Office365Groups.ListGroupMembers("0344ace1-9134-48dd-a998-a63f0842ffbd").value.mail,DisplayMode.Edit,DisplayMode.Disabled)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        OnSelect: |-
+            =Launch("https://apps.powerapps.com/play/e/default-606d2bd6-bae0-4766-8d4b-07321c1514ef/a/172294ec-10dd-441f-9cee-9b1177e28b4d?tenantId=606d2bd6-bae0-4766-8d4b-07321c1514ef&hint=c9c846ad-67ee-4b29-8572-d07dac412fe2&sourcetime=1698327538214")
+        Text: ="SRN"
+        Width: =510
+        X: =110
+        Y: =621
+        ZIndex: =17
+
+    Label35 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Color: =RGBA(0, 94, 146, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Text: ="Home"
+        X: =533
+        ZIndex: =18
+

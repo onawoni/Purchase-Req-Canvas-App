@@ -1,0 +1,37 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+    "CdpRevision": {
+      "BaseUrl": "/v3",
+      "LastChangedTimeString": "2023-12-12T17:37:18.4720000Z",
+      "RevisionNumber": 3
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "amount": "amount",
+      "amountLocalCurrency": "amountLocalCurrency",
+      "balancingAccountNumber": "balancingAccountNumber",
+      "balancingAccountType": "balancingAccountType",
+      "creditAmount": "creditAmount",
+      "creditAmountLocalCurrency": "creditAmountLocalCurrency",
+      "currencyCode": "currencyCode",
+      "debitAmount": "debitAmount",
+      "debitAmountLocalCurrency": "debitAmountLocalCurrency",
+      "description": "description",
+      "dimensionSetID": "dimensionSetID",
+      "documentNumber": "documentNumber",
+      "documentType": "documentType",
+      "entryNumber": "entryNumber",
+      "externalDocumentNumber": "externalDocumentNumber",
+      "lastModifiedDateTime": "lastModifiedDateTime",
+      "open": "open",
+      "postingDate": "postingDate",
+      "vendorNumber": "vendorNumber"
+    },
+    "DatasetName": "PRODUCTION-202303161607,071455fb-83f2-ed11-8848-002248f94e13",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": false,
+    "Name": "vendorLedgerEntries (microsoft/reportsFinance/beta)",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

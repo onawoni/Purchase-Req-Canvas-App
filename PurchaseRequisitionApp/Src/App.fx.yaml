@@ -1,0 +1,323 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =//Collect(SPListEmail,'Sharepoint Email');Set(currentUser,User();Set(varEmail,LookUp(SPListEmail,Username.Email=Username.Email,Username)))
+        //ClearCollect(DimensionsCollection,'dimensions (v2.0)');
+        Set(
+            varUserEmail,
+            User().Email
+        );
+        Set(
+            varRID,
+            Value(Param("RID"))
+        );
+        If(
+            varRID > 0,
+            Set(
+                varRequestForm,
+                LookUp(
+                    'Ladol Test List',
+                    ID = varRID
+                )
+            );
+            Navigate(Approval)
+        );
+        Set(
+            enableDialog,
+            false
+        );
+        //ClearCollect(colItemUpdate,ShowColumns(Table( Defaults('purchaseOrderLines (v2.0)')),"directUnitCost","quantity","id" ));
+        //Clear(colItemUpdate)
+        ClearCollect(
+            ProcAdminItemsCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "OData__x0031_stVendorPrice",
+                "OData__x0031_stVendorDiscount",
+                "OData__x0032_ndVendorPrice",
+                "OData__x0032_ndVendorDiscount",
+                "OData__x0033_rdVendorPrice",
+                "OData__x0033_rdVendorDiscount",
+                /*"OData__x0032_stVendorDicsPrice",
+                "OData__x0033_rdVendorDicsPrice",*/
+                "FirstVendorName",
+                "FirstVendorID",
+                "FirstVendorCurCode",
+                "FirstVendorNo",
+                "SecondVendorName",
+                "SecondVendorID",
+                "SecondVendorCurCode",
+                "SecondVendorNo",
+                "ThirdVendorName",
+                "ThirdVendorID",
+                "ThirdVendorNo",
+                "ThirdVendorCurCode",
+                "AdvancePayment",
+                "AdvancePaymentID",
+                "SecondVendorAdvPaymentTerms",
+                "SecondVendorAdvPaymentID",
+                "ThirdVendorAdvPaymentTerms",
+                "ThirdVendorAdvPaymentID",
+                "FirstVendorPercVal",
+                "SecondVendorPercVal",
+                "ThirdVendorPercVal",
+                "FirstVendorPrePayPrice",
+                "SecondVendorPrePayPrice",
+                "ThirdVendorPrePayPrice",
+                "RequesterComment",
+                "ID"
+            )
+        );
+        Clear(ProcAdminItemsCollection);
+        ///////////
+        ClearCollect(
+            ProcAdminGLCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "OData__x0031_stVendorPrice",
+                "OData__x0031_stVendorDiscount",
+                "OData__x0032_ndVendorPrice",
+                "OData__x0032_ndVendorDiscount",
+                "OData__x0033_rdVendorPrice",
+                "OData__x0033_rdVendorDiscount",
+                /*"OData__x0032_stVendorDicsPrice",
+                "OData__x0033_rdVendorDicsPrice",*/
+                "FirstVendorName",
+                "FirstVendorID",
+                "FirstVendorCurCode",
+                "FirstVendorNo",
+                "SecondVendorName",
+                "SecondVendorID",
+                "SecondVendorCurCode",
+                "SecondVendorNo",
+                "ThirdVendorName",
+                "ThirdVendorID",
+                "ThirdVendorNo",
+                "ThirdVendorCurCode",
+                "AdvancePayment",
+                "AdvancePaymentID",
+                "SecondVendorAdvPaymentTerms",
+                "SecondVendorAdvPaymentID",
+                "ThirdVendorAdvPaymentTerms",
+                "ThirdVendorAdvPaymentID",
+                "FirstVendorPercVal",
+                "SecondVendorPercVal",
+                "ThirdVendorPercVal",
+                "FirstVendorPrePayPrice",
+                "SecondVendorPrePayPrice",
+                "ThirdVendorPrePayPrice",
+                "RequesterComment",
+                "ID"
+            )
+        );
+        Clear(ProcAdminGLCollection);
+        
+        //////////
+        ClearCollect(
+            ProcManagerItemsCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "ItemApprovalStatus",
+                "ID",
+                "ApprovedPrice",
+                "ApprovedVendor",
+                "ApprovedVendorValue",
+                "ApprovedPrepPay_x002e_",
+                "ApprovedPrePayPerc",
+                "ApprovedVendorID",
+                "ApprovedAdvPaymentTerms",
+                "ApprovedAdvPaymentTermsID",
+                "RejectionComment",
+                "ApprovedCurrencyCode",
+                "RequesterComment"
+            )
+        );
+        Clear(ProcManagerItemsCollection);
+        ////////
+        ClearCollect(
+            ProcManagerGLCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "ItemApprovalStatus",
+                "ID",
+                "ApprovedPrice",
+                "ApprovedVendor",
+                "ApprovedVendorValue",
+                "ApprovedPrepPay_x002e_",
+                "ApprovedPrePayPerc",
+                "ApprovedVendorID",
+                "ApprovedAdvPaymentTerms",
+                "ApprovedAdvPaymentTermsID",
+                "RejectionComment",
+                "ApprovedCurrencyCode",
+                "RequesterComment"
+            )
+        );
+        Clear(ProcManagerGLCollection);
+        ////////
+        ClearCollect(
+            MDItemsCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "ItemApprovalStatus",
+                "ID"
+            )
+        );
+        Clear(MDItemsCollection);
+        ClearCollect(
+            AllRequestCollection,
+            ShowColumns(
+                Table(Defaults('Purchase Requisition Line Item')),
+                "ID",
+                "Qauntity",
+                "ItemSpecification"
+            )
+        );
+        ClearCollect(
+            ApprovedLineItemCollection,
+            ShowColumns(
+                Table(Defaults('PR First Vendor')),
+                "ItemName",
+                "ItemNo",
+                "FirstVendorItemID",
+                "Price",
+                "Quantity",
+                "PrepaymentPercent",
+                "ID",
+                "LineItemID",
+                "ItemSpecification",
+                "LineVendorID"
+            )
+        );
+        Clear(ApprovedLineItemCollection);
+        ////////
+        ClearCollect(
+            ApprovedLineGLCollection,
+            ShowColumns(
+                Table(Defaults('PR First Vendor')),
+                "GLAccountName",
+                "GLAccountNo",
+                "GLAccountID",
+                "Price",
+                "Quantity",
+                "PrepaymentPercent",
+                "ID",
+                "LineItemID",
+                "GLAccountDescription",
+                "LineVendorID"
+            )
+        );
+        Clear(ApprovedLineGLCollection);
+        ///////
+        ClearCollect(
+            VendorDetailsCollection,
+            ShowColumns(
+                Table(Defaults('PR Second Vendor')),
+                "ApprovedVendorName",
+                "ApprovedVendorNo",
+                "ApprovedVendorID",
+                "ApprovedPaymentTerms",
+                "ApprovedPaymentTermsID",
+                "LineVendorID",
+                "LineItemID",
+                "ServiceType",
+                "PurchaseOrderNo",
+                "RequesterComment",
+                "PrepaymentPercent",
+                "ID"
+            )
+        );
+        Clear(VendorDetailsCollection);
+        ////////
+        ClearCollect(
+            GLVendorDetailsCollection,
+            ShowColumns(
+                Table(Defaults('PR Second Vendor')),
+                "ApprovedVendorName",
+                "ApprovedVendorNo",
+                "ApprovedVendorID",
+                "ApprovedPaymentTerms",
+                "ApprovedPaymentTermsID",
+                "LineVendorID",
+                "LineItemID",
+                "ServiceType",
+                "PurchaseOrderNo",
+                "RequesterComment",
+                "PrepaymentPercent",
+                "ID"
+            )
+        );
+        Clear(GLVendorDetailsCollection);
+        ///////
+        ClearCollect(
+            SecondVendorCollection,
+            ShowColumns(
+                Table(Defaults('PR Second Vendor')),
+                "ItemName",
+                "ItemNumber",
+                "ItemID",
+                "Price",
+                "Quantity",
+                "PrepaymentPercent",
+                "ID",
+                "LineItemID"
+            )
+        );
+        Clear(SecondVendorCollection);
+        ClearCollect(
+            ThirdVendorCollection,
+            ShowColumns(
+                Table(Defaults('PR Third Vendor')),
+                "ItemName",
+                "ItemNumber",
+                "ItemID",
+                "Price",
+                "Quantity",
+                "PrepaymentPercent",
+                "ID",
+                "LineItemID"
+            )
+        );
+        ClearCollect(ManagerItemUpdateCollection,
+        ShowColumns(Table(Defaults('Purchase Requisition Line Item')),
+                "ID",
+                "Qauntity",
+                "ItemSpecification"
+            ));
+        Clear(ManagerItemUpdateCollection);
+        ClearCollect(ManagerGLUpdateCollection,
+        ShowColumns(Table(Defaults('Purchase Requisition Line Item')),
+                "ID",
+                "GLAccountDescription",
+                "Qauntity"
+            ));
+        Clear(ManagerGLUpdateCollection);
+        Clear(ThirdVendorCollection);
+        Clear(AllRequestCollection);
+        Set(
+            varMDGroup,
+            "cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96"
+        );
+        Set(
+            varProcManagerGroup,
+            "cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96"
+        );
+        Set(
+            varProcAdminGroup,
+            "cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96"
+        );
+        Set(
+            varLineManagerGroup,
+            "cd5c44f0-d1d1-4c0d-bebb-b5a11fc0fb96"
+        );
+        
+    StartScreen: =
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
