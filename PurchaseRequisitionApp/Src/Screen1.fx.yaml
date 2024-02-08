@@ -1,0 +1,76 @@
+Screen1 As screen:
+
+    SearchText As text:
+        Default: =
+        X: =594
+        Y: =12
+        ZIndex: =3
+
+    Gallery5 As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Height: =335
+        Items: |-
+            =Filter('items (v2.0)','Display Name'= SearchText.Text)
+            //Filter('items (v2.0)', 'No.' = SearchText.Text)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+        Width: =1294
+        X: =60
+        Y: =60
+        ZIndex: =4
+
+        Label12 As label:
+            Height: =58
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Id
+            Width: =448
+            X: =12
+            Y: =9
+            ZIndex: =1
+
+        Label12_5 As label:
+            Height: =58
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'Display Name'
+            Width: =448
+            X: =482
+            Y: =9
+            ZIndex: =2
+
+    Gallery5_1 As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Height: =223
+        Items: =Filter('generalLedgerAccounts (microsoft/reportsFinance/beta)',accountName = SearchText_1.Text)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(280, Self.Width - 60), Min(280, Self.Height - 60))
+        Width: =1294
+        X: =72
+        Y: =432
+        ZIndex: =5
+
+        Label12_6 As label:
+            Height: =58
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.id
+            Width: =448
+            X: =12
+            Y: =9
+            ZIndex: =1
+
+        Label12_7 As label:
+            Height: =58
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.accountName
+            Width: =448
+            X: =482
+            Y: =9
+            ZIndex: =2
+
+    SearchText_1 As text:
+        Default: =
+        X: =472
+        Y: =392
+        ZIndex: =6
+
