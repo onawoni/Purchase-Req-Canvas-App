@@ -2235,7 +2235,7 @@ Approval As screen:
             Items: =Filter('Purchase Requisition Line Item','Line ItemID' = Value(RecordID.Text))
             Layout: =Layout.Vertical
             LoadingSpinner: =LoadingSpinner.Data
-            TemplateSize: =34
+            TemplateSize: =54
             Visible: =If(Type_of_service.Selected.Value="G/L Account",true,false)
             Width: =1317
             X: =21
@@ -2300,6 +2300,7 @@ Approval As screen:
                     ServiceAmount:QuantityText.Text,
                     Qauntity:QuantityText.Text,
                     ID: ThisItem.ID}))
+                Visible: =If(Len(DescriptionText.Text)>49,false, true)
                 Width: =50
                 X: =1257
                 ZIndex: =7
@@ -2320,6 +2321,18 @@ Approval As screen:
                 Width: =145
                 X: =559
                 ZIndex: =9
+
+            Label40 As label:
+                Color: =RGBA(168, 0, 0, 1)
+                FontWeight: =FontWeight.Bold
+                Height: =20
+                OnSelect: =Select(Parent)
+                Text: ="Chrachter lent must not be more than 50"
+                Visible: =If(Len(DescriptionText.Text)>49, true, false)
+                Width: =500
+                X: =733
+                Y: =34
+                ZIndex: =10
 
         Rectangle19_1 As rectangle:
             Fill: =RGBA(255, 255, 255, 1)
