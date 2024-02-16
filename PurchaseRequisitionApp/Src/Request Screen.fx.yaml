@@ -2030,7 +2030,7 @@
                 ZIndex: =9
 
             ItemRequest_ID As text:
-                Default: =RequestID
+                Default: =RequestID.Text
                 Height: =37
                 OnSelect: =Select(Parent)
                 Visible: =false

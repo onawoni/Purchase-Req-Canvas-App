@@ -2328,7 +2328,7 @@
                 PO_Number As label:
                     Height: =30
                     OnSelect: =Select(Parent)
-                    Text: ="PORD0"&Line_Vendor_ID & "/" & MDRequestID.Text
+                    Text: =PO_Prefix.Text & Line_Vendor_ID.Text & "/" & MDRequestID.Text
                     Visible: =false
                     Width: =200
                     X: =256
@@ -2679,7 +2679,7 @@
                 PO_Number_1 As label:
                     Height: =22
                     OnSelect: =Select(Parent)
-                    Text: ="PORD0"&Line_Vendor_ID_1 & "/" & MDRequestID.Text
+                    Text: =PO_Prefix.Text & Line_Vendor_ID_1.Text & "/" & MDRequestID.Text
                     Visible: =false
                     Width: =188
                     X: =280
@@ -4032,6 +4032,15 @@
             X: =454
             Y: =116
             ZIndex: =28
+
+    PO_Prefix As text:
+        Default: =If(DataCardValue30_1.Selected.Value = "Item", "PORDO","SERDO")
+        Height: =38
+        Visible: =false
+        Width: =123
+        X: =921
+        Y: =118
+        ZIndex: =29
 
     Loading As group:
         Height: =5

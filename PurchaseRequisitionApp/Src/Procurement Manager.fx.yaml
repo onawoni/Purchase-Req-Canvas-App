@@ -4364,7 +4364,7 @@
             Height: =32
             OnSelect: =
             Size: =15
-            Text: =Proc_Manager_Gallery.Selected.Approval_Status
+            Text: =Proc_Manager_Gallery.Selected.Approval_Status.Text
             Visible: =varLineItemDetails
             Width: =172
             X: =1058
@@ -5010,7 +5010,7 @@
             Height: =32
             OnSelect: =
             Size: =15
-            Text: =Proc_Manager_Gallery_1.Selected.Approval_Status_1
+            Text: =Proc_Manager_Gallery_1.Selected.Approval_Status_1.Text
             Visible: =varLineGLDetails
             Width: =172
             X: =1058
